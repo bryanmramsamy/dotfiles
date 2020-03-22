@@ -83,7 +83,8 @@ gaps inner 10  # Gap size between windows
 smart_gaps on  # No gap when only one window active
 # smart_borders on  # No border when only one window active
 
-for_window [class=".*"] title_format "    %title"
+# [2019-10-18: DISABLED] Format window title
+# for_window [class=".*"] title_format "    %title"
 
 # ---------------| SOFTWARE MANAGEMENT |---------------
 
@@ -201,7 +202,7 @@ bindsym $mod+Shift+q focus child
 # [2019-10-18: OK] Use of variables for workspaces
 set $workspace0 "0: Terminal "
 set $workspace1 "1: Firefox "
-set $workspace2 "2: Web Browsers  "
+set $workspace2 "2: Browsers  "
 set $workspace3 "3: File/Media  "
 set $workspace4 "4: Code "
 set $workspace5 "5: Communications  "
@@ -347,3 +348,8 @@ bindsym $mod+F5 exec ~/.config/i3/scripts/acpi_brightness.sh down # decrease scr
 
 # [2019-09-22: OK] Enable sound on i3
 exec_always start-pulseaudio-x1
+
+
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+
+for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable

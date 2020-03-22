@@ -132,6 +132,7 @@ label-indicator-underline = ${colors.color-magenta-light}
 [module/filesystem]
 type = internal/fs
 interval = 10
+spacing = 1
 
 mount-0 = /
 mount-1 = /mnt/80D62472D6246B1C
@@ -180,8 +181,8 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 1
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.color-black-dark}
+label-mode-background = ${colors.color-white-dark}
 
 ; focused = Active workspace on focused monitor
 label-focused = "%name%"
@@ -287,14 +288,14 @@ interval = 5
 ;format-connected = <ramp-signal> <label-connected>
 label-connected-foreground = ${colors.color-green-light}
 format-connected-underline = ${colors.color-green-light}
-label-connected = "  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% "
+label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% %{A}"
 
 
 
 ;format-disconnected =
 ;format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "  DOWN "
+label-disconnected = "%{A3:nm-connection-editor:}  DOWN %{A}"
 label-disconnected-foreground = ${colors.color-red-light}
 
 ramp-signal-0 = 
@@ -313,13 +314,13 @@ interval = 5
 format-connected-underline = ${colors.color-green-light}
 ;format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = "  %local_ip%  %linkspeed%  %downspeed%  %upspeed% "
+label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %linkspeed%  %downspeed%  %upspeed% %{A}"
 label-connected-foreground = ${colors.color-green-light}
 
 ;format-disconnected =
 ;format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "  DOWN "
+label-disconnected = "%{A3:nm-connection-editor:}  DOWN %{A}"
 label-disconnected-foreground = ${colors.color-red-light}
 
 
@@ -345,7 +346,7 @@ label = " %date% %time% "
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = %{A3:pavucontrol:}<ramp-volume> <label-volume>%{A}
 format-volume-foreground = ${colors.color-white-light}
 format-volume-background = ${colors.color-black-dark}
 format-volume-underline = ${colors.color-blue-light}
