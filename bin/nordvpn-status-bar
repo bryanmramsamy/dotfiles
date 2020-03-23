@@ -11,7 +11,7 @@ elif [[ $STATUS == Connecting ]]; then
     COLOUR="#D8D782"
 else
     DISPLAY='Disconnected'
-    COLOUR="#9A4138"
+    COLOUR="#E7766B"
 fi
 
 echo "%{F$COLOUR} (NordVPN) $DISPLAY%{F-}"
