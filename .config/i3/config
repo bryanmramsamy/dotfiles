@@ -254,6 +254,7 @@ assign [class="Opera"] $workspace2
 
 assign [class="Nautilus"] $workspace3
 assign [class="Thunar"] $workspace3
+assign [class="Nemo"] $workspace3
 assign [class="vlc"] $workspace3
 
 assign [class="Code"] $workspace4

@@ -138,9 +138,9 @@ spacing = 1
 
 mount-0 = /
 # Aurora-2016
-#mount-1 = /mnt/80D62472D6246B1C
+mount-1 = /mnt/80D62472D6246B1C
 # IT-2019-004
-mount-1 = /mnt/F8D42178D4213A70
+#mount-1 = /mnt/F8D42178D4213A70
 
 label-mounted = "  %free% "
 label-unmounted = "  %mountpoint%  "
@@ -270,7 +270,10 @@ exec = ~/bin/nordvpn-status-bar
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+# Aurora-2016
+interface = wlp3s0
+# IT-2019-005
+#interface = wlp5s0
 interval = 5
 
 ;format-connected = <ramp-signal> <label-connected>
@@ -295,9 +298,9 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/eth]
 type = internal/network
 # Aurora-2016
-#interface = enx503eaaddda6c
+interface = enx503eaaddda6c
 # IT-2019-005
-interface = enp4s0
+#interface = enp4s0
 interval = 5
 
 format-connected-underline = ${colors.color-green-light}
@@ -452,9 +455,9 @@ animation-charging-framerate = 1000
 type = internal/temperature
 
 # Aurora-2016
-#hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
 # IT-2019-004
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+#hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 
 thermal-zone = 0
 warn-temperature = 85
