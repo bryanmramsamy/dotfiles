@@ -354,3 +354,6 @@ exec_always start-pulseaudio-x1
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 
 for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
+
+for_window [class="Wicd-client.py" instance="wicd-client.py"] floating enable
+
