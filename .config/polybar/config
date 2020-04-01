@@ -59,7 +59,7 @@ height = 22
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = true
+fixed-center = false
 
 background = ${colors.color-black-dark}
 foreground = ${colors.color-white-light}
@@ -77,12 +77,12 @@ module-margin-left = 1
 module-margin-right = 0
 ;module-margin = 1
 
-font-0 = "Ubuntu Condensed Regular:size=10"
-font-1 = "Font Awesome:size=10"
+font-0 = "Ubuntu Condensed Regular:size=10;2"
+font-1 = "Font Awesome:size=10;2"
 
 modules-left = i3
-modules-center = date
-modules-right = xbacklight pulseaudio memory filesystem nordvpn wireless-network wlan wired-network eth cpu temperature battery xkeyboard powermenu
+modules-center =
+modules-right = xbacklight pulseaudio filesystem wlan eth nordvpn memory cpu temperature battery date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -104,6 +104,8 @@ cursor-click = pointer
 
 
 [module/xwindow]
+# DISABLED
+
 type = internal/xwindow
 label = %title:0:30:...%
 
@@ -132,11 +134,15 @@ label-indicator-underline = ${colors.color-magenta-light}
 [module/filesystem]
 type = internal/fs
 interval = 10
+spacing = 1
 
 mount-0 = /
+# Aurora-2016
+#mount-1 = /mnt/80D62472D6246B1C
+# IT-2019-004
 mount-1 = /mnt/F8D42178D4213A70
 
-label-mounted = "  %free%/%total% "
+label-mounted = "  %free% "
 label-unmounted = "  %mountpoint%  "
 label-unmounted-foreground = ${colors.color-red-dark}
 label-unmounted-background = ${colors.color-black-dark}
@@ -145,29 +151,6 @@ label-unmounted-underline = ${colors.color-cyan-dark}
 label-mounted-foreground = ${colors.color-white-light}
 label-mounted-background = ${colors.color-black-dark}
 label-mounted-underline = ${colors.color-cyan-dark}
-
-
-# [module/bspwm]
-# type = internal/bspwm
-
-# label-focused = %index%
-# label-focused-background = ${colors.background-alt}
-# label-focused-underline= ${colors.primary}
-# label-focused-padding = 2
-
-# label-occupied = %index%
-# label-occupied-padding = 2
-
-# label-urgent = %index%!
-# label-urgent-background = ${colors.alert}
-# label-urgent-padding = 2
-
-# label-empty = %index%
-# label-empty-foreground = ${colors.foreground-alt}
-# label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
 
 
 [module/i3]
@@ -180,8 +163,8 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 1
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.color-black-dark}
+label-mode-background = ${colors.color-white-dark}
 
 ; focused = Active workspace on focused monitor
 label-focused = "%name%"
@@ -212,6 +195,8 @@ label-urgent-padding = 1
 
 
 [module/mpd]
+# DISABLED
+
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
@@ -226,6 +211,8 @@ label-song-ellipsis = true
 
 
 [module/xbacklight]
+# DON'T WORK
+
 type = internal/xbacklight
 
 output = VGA-0
@@ -247,6 +234,8 @@ label = "%percentage%"
 
 
 [module/backlight-acpi]
+# DON'T WORK
+
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
@@ -267,22 +256,16 @@ interval = 2
 ;format-prefix = "  "
 format-prefix-foreground = ${colors.color-white-light}
 format-underline = ${colors.color-magenta-light}
-label = "  %gb_free%/%gb_total% "
+label = "  %gb_free% "
 
 
 [module/nordvpn]
-exec = nordvpn status | grep "Status\|City"
-
-
-
-[module/wireless-network]
-type = internal/network
-interface = wlp5s0
-interval = 5
-
-format-connected-underline = ${colors.color-green-light}
-label-connected = "  %local_ip% "
-label-connected-foreground = ${colors.color-green-light}
+type = custom/script
+tail = true
+label = " %output% "
+label-foreground = ${colors.color-green-light}
+label-underline = ${colors.color-green-light}
+exec = ~/bin/nordvpn-status-bar
 
 
 [module/wlan]
@@ -293,14 +276,12 @@ interval = 5
 ;format-connected = <ramp-signal> <label-connected>
 label-connected-foreground = ${colors.color-green-light}
 format-connected-underline = ${colors.color-green-light}
-label-connected = "  %essid%  %signal%%  %downspeed%  %upspeed% "
-
-
+label-connected = "%{A3:wicd-client:}  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% %{A}"
 
 ;format-disconnected =
 ;format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "  DOWN "
+label-disconnected = "%{A3:wicd-client:}  DOWN %{A}"
 label-disconnected-foreground = ${colors.color-red-light}
 
 ramp-signal-0 = 
@@ -311,31 +292,24 @@ ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 
-[module/wired-network]
-type = internal/network
-interface = enp4s0
-interval = 5
-
-format-connected-underline = ${colors.color-green-light}
-label-connected = "  %local_ip% "
-label-connected-foreground = ${colors.color-green-light}
-
-
 [module/eth]
 type = internal/network
+# Aurora-2016
+#interface = enx503eaaddda6c
+# IT-2019-005
 interface = enp4s0
 interval = 5
 
 format-connected-underline = ${colors.color-green-light}
 ;format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = "  %linkspeed%  %downspeed%  %upspeed% "
+label-connected = "%{A3:wicd-client:}  %local_ip%  %linkspeed%  %downspeed%  %upspeed% %{A}"
 label-connected-foreground = ${colors.color-green-light}
 
 ;format-disconnected =
 ;format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "  DOWN "
+label-disconnected = "%{A3:wicd-client:}  DOWN %{A}"
 label-disconnected-foreground = ${colors.color-red-light}
 
 
@@ -349,31 +323,32 @@ date-alt = " %A %d %B %Y"
 time = " %H:%M:%S"
 time-alt = " %H:%M:%S"
 
-;format-prefix = 
+;format-prefix =
 format-foreground = ${colors.color-white-light}
 format-background = ${colors.color-black-dark}
 format-underline = ${colors.color-white-dark}
 
-label = %date% %time%
+label = " %date% %time% "
 # label-foreground = ${colors.background-alt}
 
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = %{A3:pavucontrol:}<ramp-volume> <label-volume>%{A}
 format-volume-foreground = ${colors.color-white-light}
 format-volume-background = ${colors.color-black-dark}
 format-volume-underline = ${colors.color-blue-light}
 label-volume = " %percentage%% "
 
-label-muted = "  MUTED "
+label-muted = "  MUTED "
 label-muted-foreground = ${colors.color-blue-light}
 label-muted-background = ${colors.color-black-dark}
 label-muted-underline = ${colors.color-blue-light}
 
-ramp-volume-0 = " "
-ramp-volume-1 = " "
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
 # ramp-volume-2 = ""
 
 # bar-volume-width = 10
@@ -395,6 +370,8 @@ ramp-volume-1 = " "
 
 
 [module/alsa]
+# DISABLED
+
 type = internal/alsa
 
 format-volume = <ramp-volume> <label-volume>
@@ -435,16 +412,16 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = <ramp-capacity> <label-charging>
+format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.color-magenta-dark}
-label-charging = " %percentage%%  %time:0:5% "
+label-charging = " %percentage%%  %time:0:5% "
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 label-discharging = " %percentage%%  %time:0:5% "
 
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.color-white-light}
 format-full-underline = ${self.format-charging-underline}
 label-full = " %percentage%%  %consumption%W "
@@ -453,13 +430,16 @@ ramp-capacity-0 = " "
 ramp-capacity-1 = " "
 ramp-capacity-2 = " "
 ramp-capacity-3 = " "
+ramp-capacity-4 = " "
 ramp-capacity-foreground = ${colors.color-white-light}
 
-# animation-charging-0 = 
-# animation-charging-1 = 
-# animation-charging-2 = 
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
 # animation-charging-foreground = ${colors.foreground-alt}
-# animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 # animation-discharging-0 = 
 # animation-discharging-1 = 
@@ -471,10 +451,13 @@ ramp-capacity-foreground = ${colors.color-white-light}
 [module/temperature]
 type = internal/temperature
 
+# Aurora-2016
+#hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+# IT-2019-004
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 
 thermal-zone = 0
-warn-temperature = 70
+warn-temperature = 85
 
 format = <ramp> <label>
 format-foreground = ${colors.color-white-light}
@@ -488,9 +471,11 @@ label-warn = " %temperature-c%  "
 label-warn-foreground = ${colors.color-white-light}
 label-warn-background = ${colors.color-red-dark}
 
-ramp-0 = " "
-ramp-1 = " "
-ramp-2 = " "
+ramp-0 = " "
+ramp-1 = " "
+ramp-2 = " "
+ramp-3 = " "
+ramp-4 = " "
 ramp-foreground = ${colors.color-white-light}
 ramp-warn-foreground = ${colors.color-white-light}
 ramp-warn-background = ${colors.color-red-dark}
