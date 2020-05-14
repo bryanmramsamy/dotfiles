@@ -1,0 +1,18 @@
+[/]
+foreground-color='rgb(255,255,255)'
+visible-name='Arc Dark Aurora'
+palette=['rgb(56,60,74)', 'rgb(154,65,56)', 'rgb(75,236,144)', 'rgb(216,215,130)', 'rgb(82,148,226)', 'rgb(206,80,221)', 'rgb(107,229,231)', 'rgb(204,204,204)', 'rgb(64,69,82)', 'rgb(231,118,107)', 'rgb(60,191,117)', 'rgb(207,205,99)', 'rgb(87,156,239)', 'rgb(173,127,168)', 'rgb(144,253,255)', 'rgb(255,255,255)']
+bold-is-bright=true
+default-size-columns=80
+scroll-on-output=true
+use-system-font=false
+use-theme-colors=false
+use-transparent-background=true
+font='MesloLGS NF 13'
+use-theme-transparency=false
+bold-color-same-as-fg=true
+cursor-blink-mode='off'
+background-color='rgb(0,0,0)'
+background-transparency-percent=30
+text-blink-mode='never'
+audible-bell=true
