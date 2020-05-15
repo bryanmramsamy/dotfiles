@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#/usr/bin/firefox -P DELTA --no-remote --class firefox-delta-class
+/usr/bin/firefox -P DELTA  # --class firefox-delta-class
