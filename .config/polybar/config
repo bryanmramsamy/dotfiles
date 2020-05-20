@@ -421,7 +421,7 @@ label-unmounted-foreground = ${colors.color-white-dark}
 label-unmounted-background = ${colors.color-red-dark}
 
 label-mounted-foreground = ${colors.color-black-dark}
-label-mounted-background = ${colors.color-green-light}
+label-mounted-background = ${colors.color-green-dark}
 
 
 # ---------------------------------------------------------------------------- #
@@ -546,8 +546,8 @@ interval = 5
 
 ;format-connected = <ramp-signal> <label-connected>
 label-connected-foreground = ${colors.color-black-dark}
-label-connected-background = ${colors.color-green-light}
-format-connected-underline = ${colors.color-green-light}
+label-connected-background = ${colors.color-green-dark}
+format-connected-underline = ${colors.color-green-dark}
 label-connected = "%{A3:wicd-client:}  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% %{A}"
 
 ;format-disconnected =
@@ -578,8 +578,8 @@ interface = enp4s0
 interval = 5
 
 label-connected-foreground = ${colors.color-black-dark}
-label-connected-background = ${colors.color-green-light}
-format-connected-underline = ${colors.color-green-light}
+label-connected-background = ${colors.color-green-dark}
+format-connected-underline = ${colors.color-green-dark}
 ;format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = "%{A3:wicd-client:}  %local_ip%  %linkspeed%  %downspeed%  %upspeed% %{A}"
