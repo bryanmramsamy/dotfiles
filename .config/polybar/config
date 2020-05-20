@@ -19,7 +19,7 @@
 # ---------------------------------------------------------------------------- #
 
 [colors]
-color-black-dark = ${xrdb:color0}
+color-black-dark = #000
 color-black-light = ${xrdb:color8}
 color-red-dark = ${xrdb:color1}
 color-red-light = ${xrdb:color9}
@@ -262,6 +262,9 @@ ramp-capacity-2 = " "
 ramp-capacity-3 = " "
 ramp-capacity-4 = " "
 ramp-capacity-5 = " "
+
+ramp-capacity-0-foreground = ${colors.color-white-light}
+ramp-capacity-0-background = ${colors.color-red-light}
 
 animation-charging-0 = " "
 animation-charging-1 = " "
