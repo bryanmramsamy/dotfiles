@@ -112,7 +112,7 @@ modules-right = wlan eth
 
 cursor-click = pointer
 
-# -------------------------------| TOP BAR MODULES |-------------------------- #
+# ----------------------------| TOP BAR MODULES |----------------------------- #
 
 # ---------------------------------------------------------------------------- #
 #                                  I3 MODULE
@@ -349,21 +349,21 @@ menu-2-0-background = ${colors.color-yellow-dark}
 type = internal/cpu
 interval = 2
 format-prefix = "  "
-format-foreground = ${colors.color-black-dark}
+format-foreground = ${colors.color-white-light}
 format-background = ${colors.color-blue-dark}
 label = "%percentage:3%% "
 
 
 # ---------------------------------------------------------------------------- #
-#                             TEMPERATURE MODULE
+#                                TEMPERATURE MODULE
 # ---------------------------------------------------------------------------- #
 
 [module/temperature]
 type = internal/temperature
 
 # Aurora-2016
-#hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
-# IT-2019-004
+# hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+# Beta-2019
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 
 thermal-zone = 0
@@ -411,8 +411,8 @@ spacing = 0
 
 mount-0 = /
 # Aurora-2016
-#mount-1 = /mnt/80D62472D6246B1C
-# IT-2019-004
+# mount-1 = /mnt/80D62472D6246B1C
+# Beta-2019
 mount-1 = /mnt/F8D42178D4213A70
 
 label-mounted = "  %free%/%total% "
@@ -421,7 +421,7 @@ label-unmounted-foreground = ${colors.color-white-dark}
 label-unmounted-background = ${colors.color-red-dark}
 
 label-mounted-foreground = ${colors.color-black-dark}
-label-mounted-background = ${colors.color-cyan-dark}
+label-mounted-background = ${colors.color-green-light}
 
 
 # ---------------------------------------------------------------------------- #
