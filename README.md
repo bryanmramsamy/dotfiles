@@ -33,6 +33,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 Files/folders to move:
 - .fonts/ -> home/
 - .zshrc -> home/
+- .p10k.zsh -> home/
 
 ## i3-gaps
 
