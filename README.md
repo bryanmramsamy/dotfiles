@@ -2,13 +2,14 @@
 
 ## Basic dependencies
 
+- acpi
 - git
 - i3
 - vim
 - zsh
 
 ```bash
-sudo apt install git vim i3 zsh
+sudo apt install acpi git vim i3 zsh
 ```
 
 ### i3-gaps dependencies
@@ -21,6 +22,17 @@ sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-de
 
 # Installations
 
+## Oh My Zsh and powerlevel10k
+
+```bash
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+Files/folders to move:
+- .fonts/ -> home/
+- .zshrc -> home/
 
 ## i3-gaps
 
