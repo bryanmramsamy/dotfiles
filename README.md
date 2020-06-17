@@ -34,6 +34,18 @@ make
 sudo make install
 ```
 
+# SSH and GPG keys
+
+# Generate and export a SSH key
+
+- **Generating a new SSH key pair** by *GitLab* :
+  - <https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair>
+
+# Generate and export a GPG key
+
+- **Signing commits with GPG** vy *GitLab* :
+  - <https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md>
+
 # Sources
 
 ## i3 rice
