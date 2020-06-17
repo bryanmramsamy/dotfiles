@@ -48,6 +48,17 @@ sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev 
 
 ## Installations
 
+### Firefox profiles
+
+Files/folders to move:
+
+- `.local/bin/Firefox-CHARLIE` -> `home/.local/bin/Firefox-CHARLIE`
+- `.local/bin/Firefox-DELTA` -> `home/.local/bin/Firefox-DELTA`
+
+```bash
+chmod +x .local/bin/Firefox-*
+```
+
 ### i3-gaps
 
 ```bash
