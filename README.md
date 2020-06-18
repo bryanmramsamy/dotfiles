@@ -5,7 +5,6 @@
 ### Basic dependencies
 
 - acpi
-- chrome
 - code
 - compton
 - git
@@ -13,26 +12,31 @@
 - i3
 - lxappearance
 - mailspring
+- numlockx
 - nemo
-- python-pip3
+- python3-pip
 - rofi
 - vim
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python-pip3 lxappearance nemo feh
+sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx
 
 sudo snap install code --classic
 sudo snap install mailspring
-
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 
 #### Docker
 
 ```bash
-sudo apt-get install apt-transport-https ca-certificates curl  gnupg-agent software-properties-common
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+
+#### Google chrome
+
+```bash
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 
 #### i3-gaps
@@ -51,6 +55,15 @@ sudo apt install arc-theme
 
 ```bash
 sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python3-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2 libjsoncpp-dev fonts-font-awesome
+```
+
+#### Tor Browser
+
+```bash
+sudo add-apt-repository ppa:micahflee/ppa
+
+sudo apt update
+sudo apt install torbrowser-launcher
 ```
 
 ## Installations
@@ -133,6 +146,14 @@ Files/folders to move:
 - `.zshrc` -> `home/`
 - `.p10k.zsh` -> `home/`
 
+### Mailspring
+
+```bash
+git clone git@github.com:mjohnson8165/mailspring-arc-dark.git
+```
+
+Install the Arc Dark Theme
+
 ### Nemo
 
 ```bash
@@ -160,6 +181,21 @@ Files/folders to move:
 
 ```bash
 xrdb ~/.Xresources  
+```
+
+### Touchpad tap-to-click
+
+```bash
+sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
+Section "InputClass"
+        Identifier "touchpad"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "Tapping" "on"
+        Option "NaturalScrolling" "on"
+EndSection
+
+EOF
 ```
 
 ## Sources

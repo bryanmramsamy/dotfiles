@@ -360,3 +360,7 @@ for_window [class="Wicd-client.py" instance="wicd-client.py"] floating enable
 # MAILSPRING
 
 exec mailspring -b
+
+# NETWORK MANAGER
+
+exec_always --no-startup-id nm-applet
