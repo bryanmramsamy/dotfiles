@@ -29,6 +29,12 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 
+#### Docker
+
+```bash
+sudo apt-get install apt-transport-https ca-certificates curl  gnupg-agent software-properties-common
+```
+
 #### i3-gaps
 
 ```bash
@@ -48,6 +54,25 @@ sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev 
 ```
 
 ## Installations
+
+### Docker and Docker-compose
+
+```bash
+sudo apt-get update
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+apt-cache madison docker-ce
+sudo docker run hello-world
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/r-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+```
 
 ### Firefox profiles
 
