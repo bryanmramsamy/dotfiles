@@ -9,6 +9,7 @@
 - code
 - compton
 - git
+- feh
 - i3
 - lxappearance
 - mailspring
@@ -19,7 +20,7 @@
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python-pip3 lxappearance nemo
+sudo apt install acpi git vim i3 zsh rofi compton python-pip3 lxappearance nemo feh
 
 sudo snap install code --classic
 sudo snap install mailspring
