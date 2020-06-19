@@ -264,6 +264,7 @@ assign [class="Eclipse"] $workspace4
 assign [class="jetbrains-pycharm-ce"] $workspace4
 assign [class="Atom"] $workspace4
 
+assign [class="Mailspring"] $workspace5
 assign [class="Thunderbird"] $workspace5
 assign [class="whatsdesk"] $workspace5
 

@@ -12,18 +12,21 @@
 - i3
 - lxappearance
 - mailspring
+- net-tools
 - numlockx
 - nemo
 - python3-pip
 - rofi
 - vim
+- vlc
+- whatsdesk
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx
+sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools
 
 sudo snap install code --classic
-sudo snap install mailspring
+sudo snap install mailspring whatsdesk
 ```
 
 #### Docker
@@ -161,6 +164,18 @@ xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.nemo.desktop show-desktop-icons true
 xdg-open $HOME
+```
+
+### NordVPN
+
+```bash
+sudo wget -qnc https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
+sudo dpkg -i nordvpn-release_1.0.0_all.deb
+
+sudo apt update
+sudo apt install nordvpn
+
+nordvpn login
 ```
 
 ### Polybar
