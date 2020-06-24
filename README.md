@@ -102,6 +102,16 @@ Files/folders to move:
 chmod +x .local/bin/Firefox-*
 ```
 
+### git
+
+```bash
+git config --global user.name "Bryan M. Ramsamy"
+git config --global user.email "rainbow_delta@outlook.com"
+
+git config --global alias.pushall-branch '!git remote | xargs -L1 -I R git push R'
+git config --global alias.pushall-allbranches '!git remote | xargs -L1 git push --all'
+```
+
 ### i3-gaps
 
 ```bash
