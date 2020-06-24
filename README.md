@@ -7,8 +7,9 @@
 - acpi
 - code
 - compton
-- git
 - feh
+- git
+- grub-customizer
 - i3
 - lxappearance
 - mailspring
@@ -23,7 +24,7 @@
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools
+sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools grub-customizer
 
 sudo snap install code --classic
 sudo snap install mailspring whatsdesk
