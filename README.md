@@ -19,13 +19,15 @@
 - nemo
 - python3-pip
 - rofi
+- vagrant
 - vim
+- virtualbox
 - vlc
 - whatsdesk
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools grub-customizer arandr
+sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools grub-customizer arandr virtualbox vagrant
 
 sudo snap install code --classic
 sudo snap install mailspring whatsdesk
