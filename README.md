@@ -149,11 +149,12 @@ git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-t
 sudo make install
 ```
 
-### Oh My Zsh and powerlevel10k
+### Oh My Zsh, zsh-autocomplete and powerlevel10k
 
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
