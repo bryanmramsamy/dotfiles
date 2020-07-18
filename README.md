@@ -164,6 +164,13 @@ Files/folders to move:
 - `.zshrc` -> `home/`
 - `.p10k.zsh` -> `home/`
 
+#### Oh My Zsh pager configuration
+
+When a command such as `git log` is entered, the results are shown in an appart prompt and disappear when left.
+To keep it inline in the terminal, this proprety in the `~/.oh-my-zsh/lib/misc.zsh.` must be changed:
+
+`env_default 'LESS' '-R'` must be changed to `env_default 'LESS' '-FRSX'`.
+
 ### Mailspring
 
 ```bash
