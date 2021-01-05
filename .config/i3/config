@@ -202,7 +202,7 @@ bindsym $mod+Shift+q focus child
 # [2019-10-18: OK] Use of variables for workspaces
 set $workspace0 "0: Terminal "
 set $workspace1 "1: Firefox "
-set $workspace2 "2: Browsers  "
+set $workspace2 "2: Browsers "
 set $workspace3 "3: File/Media  "
 set $workspace4 "4: Code "
 set $workspace5 "5: Communications  "
@@ -215,34 +215,34 @@ set $workspace11 "11: Workspace "
 set $workspace12 "12: Virtual Machines "
 
 # [2019-10-18: OK] Switch to workspace
-bindsym $mod+twosuperior workspace $workspace0
-bindsym $mod+ampersand workspace $workspace1
-bindsym $mod+eacute workspace $workspace2
-bindsym $mod+quotedbl workspace $workspace3
-bindsym $mod+apostrophe workspace $workspace4
-bindsym $mod+parenleft workspace $workspace5
-bindsym $mod+section workspace $workspace6
-bindsym $mod+egrave workspace $workspace7
-bindsym $mod+exclam workspace $workspace8
-bindsym $mod+ccedilla workspace $workspace9
-bindsym $mod+agrave workspace $workspace10
-bindsym $mod+parenright workspace $workspace11
-bindsym $mod+minus workspace $workspace12
+bindsym $mod+grave workspace $workspace0
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+bindsym $mod+minus workspace $workspace11
+bindsym $mod+equal workspace $workspace12
 
 # [2019-10-18: OK] Move focused container to workspace
-bindsym $mod+Shirt+threesuperior move container to workspace $workspace0
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+eacute move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+section move container to workspace $workspace6
-bindsym $mod+Shift+egrave move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+ccedilla move container to workspace $workspace9
-bindsym $mod+Shift+agrave move container to workspace $workspace10
-bindsym $mod+Shift+degree move container to workspace $workspace11
-bindsym $mod+Shift+underscore move container to workspace $workspace12
+bindsym $mod+Shirt+asciitilde move container to workspace $workspace0
+bindsym $mod+Shift+exclam move container to workspace $workspace1
+bindsym $mod+Shift+at move container to workspace $workspace2
+bindsym $mod+Shift+numbersign move container to workspace $workspace3
+bindsym $mod+Shift+dollar move container to workspace $workspace4
+bindsym $mod+Shift+percent move container to workspace $workspace5
+bindsym $mod+Shift+asciicircum move container to workspace $workspace6
+bindsym $mod+Shift+ampersand move container to workspace $workspace7
+bindsym $mod+Shift+asterisk move container to workspace $workspace8
+bindsym $mod+Shift+parenleft move container to workspace $workspace9
+bindsym $mod+Shift+parenright move container to workspace $workspace10
+bindsym $mod+Shift+underscore move container to workspace $workspace11
+bindsym $mod+Shift+plus move container to workspace $workspace12
 
 # [2019-10-18: OK] Assign specific apps to specific workspaces
 assign [class="Firefox"] $workspace1
@@ -265,6 +265,7 @@ assign [class="jetbrains-pycharm-ce"] $workspace4
 assign [class="Atom"] $workspace4
 
 assign [class="Mailspring"] $workspace5
+assign [class="Signal"] $workspace5
 assign [class="Thunderbird"] $workspace5
 assign [class="whatsdesk"] $workspace5
 
@@ -274,7 +275,7 @@ assign [class="VirtualBox Manager"] $workspace12
 # ---------------| DESKTOP PERSONALIZATION |---------------
 
 # [2020-02-08: OK] Desktop wallpaper
-exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/arc_dark_wallpaper.png
+exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/wallpaper_space01.jpg
 
 
 # ---------------| I3BAR PERSONALIZATION |---------------
@@ -365,3 +366,4 @@ exec mailspring -b
 # NETWORK MANAGER
 
 exec_always --no-startup-id nm-applet
+
