@@ -6,6 +6,7 @@
 
 - acpi
 - arandr
+- cloc
 - code
 - compton
 - feh
@@ -18,6 +19,7 @@
 - numlockx
 - nemo
 - python3-pip
+- screenfetch
 - rofi
 - vagrant
 - vim
@@ -27,7 +29,7 @@
 - zsh
 
 ```bash
-sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools grub-customizer arandr virtualbox vagrant
+sudo apt install acpi git vim i3 zsh rofi compton python3-pip lxappearance nemo feh numlockx vlc net-tools grub-customizer arandr virtualbox vagrant cloc screenfetch
 
 sudo snap install code --classic
 sudo snap install mailspring whatsdesk
@@ -217,7 +219,7 @@ Files/folders to move:
 - `.fonts/` -> `home/`
 
 ```bash
-xrdb ~/.Xresources  
+xrdb ~/.Xresources
 ```
 
 ### Signal

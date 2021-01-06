@@ -121,3 +121,7 @@ alias gnome_settings='XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Launch screenfetch on bash startup
+#   2021-01-06 >> testing
+if [ -f /usr/bin/screenfetch ]; then screenfetch; fi
