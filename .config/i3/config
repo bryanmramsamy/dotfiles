@@ -322,6 +322,10 @@ bindsym $mod+Tab exec rofi -show window
 #   2020-02-08 >> OK
 exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/wallpaper_space01.jpg
 
+# Screenfetch on startup in new terminal
+#   2021-01-06 >> testing
+exec gnome-terminal -- zsh -c "screenfetch; zsh"
+
 # Polybar
 #   2021-01-06 >> OK
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
