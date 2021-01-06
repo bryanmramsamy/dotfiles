@@ -135,8 +135,8 @@ label-mode-background = ${colors.color-black-dark}
 ; focused = Active workspace on focused monitor
 label-focused = "%name%"
 label-focused-foreground = ${colors.color-white-light}
-label-focused-background = ${colors.color-blue-dark}
-label-focused-underline= ${colors.color-blue-dark}
+label-focused-background = ${colors.color-blue-light}
+label-focused-underline= ${colors.color-blue-light}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
@@ -186,12 +186,12 @@ type = internal/pulseaudio
 
 format-volume = %{A3:pavucontrol:}<ramp-volume> <label-volume>%{A}
 format-volume-foreground = ${colors.color-white-light}
-format-volume-background = ${colors.color-blue-dark}
+format-volume-background = ${colors.color-blue-light}
 label-volume = " %percentage%% "
 
 label-muted = "  MUTED "
-label-muted-foreground = ${colors.color-white-light}
-label-muted-background = ${colors.color-blue-dark}
+label-muted-foreground = ${colors.color-blue-dark}
+label-muted-background = ${colors.color-black-dark}
 
 ramp-volume-0 = " "
 ramp-volume-1 = " "
@@ -287,7 +287,7 @@ format-foreground = ${colors.color-black-dark}
 format-background = ${colors.color-white-dark}
 format-spacing = 0
 
-label-layout = "%name% "
+label-layout = "%layout% "
 
 label-indicator-padding = 1
 label-indicator-margin = 0
@@ -366,7 +366,7 @@ type = internal/temperature
 
 # Aurora-2016
 # hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
-# Beta-2019
+# Butterfly-2019
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 
 thermal-zone = 0
@@ -415,7 +415,7 @@ spacing = 0
 mount-0 = /
 # Aurora-2016
 # mount-1 = /mnt/80D62472D6246B1C
-# Beta-2019
+# Butterfly-2019
 mount-1 = /mnt/F8D42178D4213A70
 
 label-mounted = "  %free%/%total% "
