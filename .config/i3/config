@@ -5,49 +5,29 @@
 # Original file can be found on /etc/i3/config
 
 
-# --------------------| BASICS OF I3 |--------------------
+# ----------------------------------------| DEFAULT I3 |----------------------------------------
 
-# [2019-10-18: UNDERSTOOD] Use of a variable to use the mod-key (Mod4)
+# Use of a variable to use the mod-key (Mod4)
+#   2019-10-18 >> OK
 set $mod Mod4
 
-# [2020-03-20: UNDERSTOOD] reload the configuration file
+# Reload the configuration file
+#   2020-03-20 >> OK
 bindsym $mod+Shift+c reload
-# [2020-03-20: UNDERSTOOD] restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+#   2020-03-20 >> OK
 bindsym $mod+Shift+r restart
-# [2020-03-20: UNDERSTOOD] exit i3 (logs you out of your X session)
+
+# Exit i3 (logs you out of your X session)
+#   2020-03-20 >> OK
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:Ubuntu 10' -m 'DO YOU WANT TO LEAVE i3 ? YOUR Xsession WILL BE ENDED' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# [2019-06-30: OK] Enable NumLock (numlockx)
-exec_always --no-startup-id numlockx on
 
-# [2019-06-30: OK] Disable mouse hovering
-focus_follows_mouse no
+# ----------------------------------------| RESOURCES |----------------------------------------
 
-# [2019-05-15: OK] Toggle Touchpad
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
-
-# [2019-05-15: OK] Touchpad natural scrolling
-exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
-
-
-# ---------------| WINDOWS APPEARANCE |---------------
-
-# [2019-10-18: OK] Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Ubuntu Bold, Font Awesome 12
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# [2019-10-18: OK] Get colours from .Xresources and put it into variables
+# Get colours from .Xresources and put it into variables
+#   2019-10-18 >> OK
 set_from_resource $activ1-bg color4
 set_from_resource $activ2-bg color12
 
@@ -60,141 +40,38 @@ set_from_resource $inact2-bg color8
 set_from_resource $urgen1-bg color1
 set_from_resource $urgen2-bg color9
 
-# [2019-10-18: OK] Custom windows colours
-# WINDOW TYPE           TOP-BORDER  WIN-BORDER  TEXT        INDICATOR
-client.focused          $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
-client.unfocused        $inact2-bg  $inact1-bg  $activ2-tx  $activ2-tx
-client.focused_inactive $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
-client.urgent           $urgen2-bg  $urgen1-bg  $activ1-tx  $activ1-tx
-
-# [2019-10-18: DISABLED] Hide windows borders
-#hide_edge_borders both
-
-# [2019-10-18: OK] Window's transparancy (compton)
-exec --no-startup-id compton
-
-# [2019-10-18: OK] Gaps between windows (i3-gaps)
-gaps inner 10  # Gap size between windows
-smart_gaps on  # No gap when only one window active
-# smart_borders on  # No border when only one window active
-
-# [2019-10-18: DISABLED] Format window title
-# for_window [class=".*"] title_format "    %title"
-
-# ---------------| SOFTWARE MANAGEMENT |---------------
-
-# [2020-03-20: UNDERSTOOD] start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
-# [2019-10-18: DISABLED] start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-
-# [2019-10-18: DISABLED] new i3-dmenu-desktop
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# [2019-10-18: OK] Rofi menu (Documentation: https://www.mankier.com/1/rofi)
-# run: shows a list of executables in $PATH and can launch them
-bindsym $mod+d exec rofi -modi run -show run
-# drun: shows a list of executables in $PATH and can launch them
-bindsym $mod+Shift+d exec rofi -modi drun -show drun -show-icons
-# window: shows a list of the windows on the current desktop and allows switching between them
-bindsym $mod+Tab exec rofi -show window
-
-# [2020-03-11: OK] Network Manager run on startup (Manage WiFi connections)
-# exec --no-startup-id nm-applet
+# Use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left j
+set $down k
+set $up l
+set $right semicolon
 
 
-# ---------------| WINDOW MANAGEMENT |---------------
+# ----------------------------------------| NAVIGATION |----------------------------------------
 
-# [2020-03-20: UNDERSTOOD] Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Toggle Touchpad
+#   2019-05-15 >> unused
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
-# [2020-03-20: UNDERSTOOD] kill focused window
-bindsym $mod+Shift+A kill
+# NumLock auto-enabled (numlockx)
+#   2019-06-30 >> OK
+exec_always --no-startup-id numlockx on  # enabled
 
-# [2020-03-20: UNDERSTOOD] change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+# Mouse hovering
+#   2019-06-30 >> OK
+focus_follows_mouse no  # disabled
 
-# [2020-03-20: UNDERSTOOD] alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# [2020-03-20: UNDERSTOOD] move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+M move right
-
-# [2020-03-20: UNDERSTOOD] alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# [2020-03-20: UNDERSTOOD] resize window (you can also use the mouse for that)
-bindsym $mod+r mode "RESIZE MODE"
-
-mode "RESIZE MODE" {
-    # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height
-    # Pressing down will grow the window’s height.
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym m resize grow width 10 px or 10 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# [2020-03-20: UNDERSTOOD] split in horizontal orientation
-bindsym $mod+h split h
-
-# [2020-03-20: UNDERSTOOD] split in vertical orientation
-bindsym $mod+v split v
-
-# [2020-03-20: UNDERSTOOD] enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# [2020-03-20: UNDERSTOOD] change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
-
-# [2020-03-20: UNDERSTOOD] toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# [2020-03-20: UNDERSTOOD] change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# [2020-03-20: UNDERSTOOD] focus the parent container
-bindsym $mod+q focus parent
-
-# [2020-03-20: UNDERSTOOD] focus the child container
-bindsym $mod+Shift+q focus child
+# Touchpad natural scrolling
+#   2019-05-15 >> OK
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113  # enabled
 
 
-# ---------------| WORKSPACE MANAGEMENT |---------------
+# -----------------------------------| WORKSPACES (desktops) |----------------------------------
 
-# [2019-10-18: OK] Use of variables for workspaces
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+#   2019-10-18 >> OK
 set $workspace0 "0: Terminal "
 set $workspace1 "1: Firefox "
 set $workspace2 "2: Browsers "
@@ -209,7 +86,8 @@ set $workspace10 "10: Workspace "
 set $workspace11 "11: Workspace "
 set $workspace12 "12: Virtual Machines "
 
-# [2019-10-18: OK] Switch to workspace
+# Switch to workspace
+#   2019-10-18 >> OK
 bindsym $mod+grave workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -224,8 +102,9 @@ bindsym $mod+0 workspace $workspace10
 bindsym $mod+minus workspace $workspace11
 bindsym $mod+equal workspace $workspace12
 
-# [2019-10-18: OK] Move focused container to workspace
-bindsym $mod+Shirt+asciitilde move container to workspace $workspace0
+# Move focused container to workspace
+#   2019-10-18 >> OK
+bindsym $mod+Shift+asciitilde move container to workspace $workspace0
 bindsym $mod+Shift+exclam move container to workspace $workspace1
 bindsym $mod+Shift+at move container to workspace $workspace2
 bindsym $mod+Shift+numbersign move container to workspace $workspace3
@@ -239,123 +118,258 @@ bindsym $mod+Shift+parenright move container to workspace $workspace10
 bindsym $mod+Shift+underscore move container to workspace $workspace11
 bindsym $mod+Shift+plus move container to workspace $workspace12
 
-# [2019-10-18: OK] Assign specific apps to specific workspaces
+# Move focused workspace between monitors
+#   2021-01-06 >> OK
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$right move workspace to output right
+#     alternatively, you can use the cursor keys:
+# bindsym $mod+Ctrl+Left move workspace to output left
+# bindsym $mod+Ctrl+Right move workspace to output right
+
+# Assign specific apps to specific workspaces
+#   2019-10-18 >> OK
+#     Workspace 1
 assign [class="Firefox"] $workspace1
 # for_window [class="firefox-charlie-class"] move to workspace $workspace1
 # for_window [class="firefox-delta-class"] move to workspace $workspace1
-
+#     Workspace 2
 assign [class="Google-chrome"] $workspace2
 assign [class="Opera"] $workspace2
-
+#     Workspace 3
 assign [class="Nautilus"] $workspace3
 assign [class="Thunar"] $workspace3
 assign [class="Nemo"] $workspace3
 assign [class="vlc"] $workspace3
-
+#     Workspace 4
 assign [class="Code"] $workspace4
 assign [class="Sublime_text"] $workspace4
 assign [class="StarUML"] $workspace4
 assign [class="Eclipse"] $workspace4
 assign [class="jetbrains-pycharm-ce"] $workspace4
 assign [class="Atom"] $workspace4
-
+#     Workspace 5
 assign [class="Mailspring"] $workspace5
 assign [class="Signal"] $workspace5
 assign [class="Thunderbird"] $workspace5
 assign [class="whatsdesk"] $workspace5
-
+#     Workspace 12
 assign [class="VirtualBox Manager"] $workspace12
 
 
-# ---------------| DESKTOP PERSONALIZATION |---------------
+# -----------------------------------| CONTAINERS (windows) |-----------------------------------
 
-# [2020-02-08: OK] Desktop wallpaper
+# Use Mouse+$mod to drag floating windows to their wanted position
+#   2020-03-20 >> OK
+floating_modifier $mod
+
+# Kill focused window
+#   2020-03-20 >> OK
+bindsym $mod+Shift+q kill
+
+# Change focus
+#   2020-03-20 >> OK
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+#     alternatively, you can use the cursor keys:
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
+
+# Move focused window
+#   2020-03-20 >> OK
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+#     alternatively, you can use the cursor keys:
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
+
+# Resize window (you can also use the mouse for that)
+#   2020-03-20 >> OK
+bindsym $mod+r mode "RESIZE MODE"
+
+mode "RESIZE MODE" {
+    # These bindings trigger as soon as you enter the resize mode
+    #   Pressing left will shrink the window’s width.
+    #   Pressing right will grow the window’s width.
+    #   Pressing up will shrink the window’s height
+    #   Pressing down will grow the window’s height.
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    #   bindsym Left resize shrink width 10 px or 10 ppt
+    #   bindsym Down resize grow height 10 px or 10 ppt
+    #   bindsym Up resize shrink height 10 px or 10 ppt
+    #   bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter, Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# Split in horizontal orientation
+#   2020-03-20 >> OK
+bindsym $mod+h split h
+
+# Split in vertical orientation
+#   2020-03-20 >> OK
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+#   2020-03-20 >> OK
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+#   2020-03-20 >> OK
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+#   2020-03-20 >> OK
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+#   2020-03-20 >> OK
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+#   2020-03-20 >> OK
+bindsym $mod+a focus parent
+
+# Focus the child container
+#   2020-03-20 >> OK
+bindsym $mod+Shift+a focus child
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#   2019-10-18 >> OK
+font pango:Ubuntu Bold, Font Awesome 12
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#   2019-10-18 >> unused
+# font pango:DejaVu Sans Mono 8
+
+# Custom windows colours
+#   2019-10-18 >> OK
+# WINDOW TYPE           TOP-BORDER  WIN-BORDER  TEXT        INDICATOR
+client.focused          $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
+client.unfocused        $inact2-bg  $inact1-bg  $activ2-tx  $activ2-tx
+client.focused_inactive $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
+client.urgent           $urgen2-bg  $urgen1-bg  $activ1-tx  $activ1-tx
+
+# Hide windows borders
+#   2019-10-18 >> unused
+# hide_edge_borders both
+
+# Window transparancy (compton)
+#   2019-10-18 >> OK
+exec --no-startup-id compton
+
+# Gaps between windows (i3-gaps)
+#   2019-10-18 >> OK
+gaps inner 10  # Gap size between windows
+smart_gaps on  # No gap when only one window active
+# smart_borders on  # No border when only one window active
+
+# Format window title
+#   2019-10-18 >> unused
+# for_window [class=".*"] title_format "    %title"
+
+# Floating windows
+#   2021-01-06 >> OK
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
+
+
+# -------------------------------------| PROGRAM LAUNCHER |-------------------------------------
+
+# Start a terminal
+#   2020-03-20 >> OK
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Start dmenu (a program launcher)
+#   2019-10-18 >> unused
+# bindsym $mod+d exec dmenu_run
+#     There also is the (new) i3-dmenu-desktop which only displays applications
+#     shipping a .desktop file. It is a wrapper around dmenu, so you need that
+#     installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Rofi menu (Documentation: https://www.mankier.com/1/rofi)
+#   2019-10-18 >> OK
+#     run: shows a list of executables in $PATH and can launch them
+bindsym $mod+d exec rofi -modi run -show run
+#     drun: shows a list of executables in $PATH and can launch them
+bindsym $mod+Shift+d exec rofi -modi drun -show drun -show-icons
+#     window: shows a list of the windows on the current desktop and allows switching between them
+bindsym $mod+Tab exec rofi -show window
+
+
+# -----------------------------------------| UTILITIES |----------------------------------------
+
+# Desktop wallpaper
+#   2020-02-08 >> OK
 exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/wallpaper_space01.jpg
 
-
-# ---------------| I3BAR PERSONALIZATION |---------------
-
+# Polybar
+#   2021-01-06 >> OK
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-# # [2019-10-19: OK] Change font for i3bar
-# 	font pango:Ubuntu Condensed Regular, Awesome 10
+# Enable sound on i3 with starting pulseaudio
+#   2019-09-22 >> OK
+exec_always start-pulseaudio-x1
 
-# # [2019-10-18: OK] Changing the i3bar informations
-# #       status_command i3status
-# 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-
-# # [2019-10-18: OK] Place the i3 on the top of the screen
-# 	position top
-
-# # [2019-10-18: OK] Customizing the i3 bar with specific colours
-# 	colors {
-# 		background $inact2-bg
-# 		separator #f3f4f5
-# 		#			BORDER			BACKGROUND		TEXT
-# 		focused_workspace	$inact2-bg		$inact2-bg		$text-color
-# 		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
-# 		urgent_workspace	$urgent-bg-color	$urgent-bg-color	$inactive-text-color
-# 	}
-
-# # [2019-06-03: NOT WORKING] Using powerline in the i3 bar
-# #	status_command python /home/bryan/.local/lib/python2.7/site-packages/powerline/bindings/i3/powerline-i3.py
-# #	font pango:PowerlineFont 12
-# }
-
-# [2021-01-06: OK] Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status  # volume increase
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# Pulse Audio controls
+#   2021-01-06 >> OK
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  # volume increase
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
   #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status  # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status  # mute mic
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle  # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle  # mute mic
 
-
-# SCREEN BRIGHTNESS
-
-# [2019-07-28: DOESN'T WORK - DISABLED] Screen brightness Lenovo shortcut
+# Screen brightness
+#   2019-07-28 >> doens't work
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
-# [2019-07-28: OK] Screen brightness Lenovo shortcut (backup fix without using Fn key)
+#     workaround
 bindsym $mod+F6 exec ~/.config/i3/scripts/acpi_brightness.sh up # increase screen brightness
 bindsym $mod+F5 exec ~/.config/i3/scripts/acpi_brightness.sh down # decrease screen brightness
 
-
-# MEDIAPLAYER
-
-# [2019-07-28: DISABLED] Media player controls
+# Media player
+#   2019-07-28 >> unused
 # bindsym XF86AudioPlay exec playerctl play
 # bindsym XF86AudioPause exec playerctl pause
 # bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec playerctl previous
 
+# Scratchpad
+#   2021-01-06 >> unused
+#     move the currently focused window to the scratchpad
+bindsym Mod1+Shift+minus move scratchpad
+#     Show the next scratchpad window or hide the focused scratchpad window.
+#     If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod1+minus scratchpad show
 
-# LOCKSCREEN
-
-# [2019-06-03: OK] Enable screenlock (i3lock)
+# Lockscreen (i3lock)
+#   2019-06-03 >> unused
 # bindsym $mod+Alt_L+l exec i3lock
 
-
-# AUDIO
-
-# [2019-09-22: OK] Enable sound on i3
-exec_always start-pulseaudio-x1
-
-
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-
-for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
-
-for_window [class="Wicd-client.py" instance="wicd-client.py"] floating enable
-
-# MAILSPRING
-
-exec mailspring -b
-
-# NETWORK MANAGER
-
+# Network manager
+#   2021-01-06 >> OK
 exec_always --no-startup-id nm-applet
 
+# Mailspring
+#   2021-01-06 >> OK
+exec mailspring -b  # open in background
