@@ -5,7 +5,7 @@
 # Original file can be found on /etc/i3/config
 
 
-# ----------------------------------------| DEFAULT I3 |----------------------------------------
+# ------------------------------------| DEFAULT I3 |------------------------------------
 
 # Use of a variable to use the mod-key (Mod4)
 #   2019-10-18 >> OK
@@ -24,7 +24,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:Ubuntu 10' -m 'DO YOU WANT TO LEAVE i3 ? YOUR Xsession WILL BE ENDED' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
-# ----------------------------------------| RESOURCES |----------------------------------------
+# ------------------------------------| RESOURCES |------------------------------------
 
 # Get colours from .Xresources and put it into variables
 #   2019-10-18 >> OK
@@ -48,7 +48,7 @@ set $up l
 set $right semicolon
 
 
-# ----------------------------------------| NAVIGATION |----------------------------------------
+# ------------------------------------| NAVIGATION |--------------------------------
 
 # Toggle Touchpad
 #   2019-05-15 >> unused
@@ -67,16 +67,16 @@ focus_follows_mouse no  # disabled
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113  # enabled
 
 
-# -----------------------------------| WORKSPACES (desktops) |----------------------------------
+# -------------------------------| WORKSPACES (desktops) |------------------------------
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 #   2019-10-18 >> OK
 set $workspace0 "0: Terminal "
 set $workspace1 "1: Firefox "
-set $workspace2 "2: Browsers "
-set $workspace3 "3: File/Media  "
-set $workspace4 "4: Code "
+set $workspace2 "2: Chrome "
+set $workspace3 "3: Code "
+set $workspace4 "4: Files "
 set $workspace5 "5: Communications  "
 set $workspace6 "6: Workspace "
 set $workspace7 "7: Workspace "
@@ -136,17 +136,17 @@ assign [class="Firefox"] $workspace1
 assign [class="Google-chrome"] $workspace2
 assign [class="Opera"] $workspace2
 #     Workspace 3
-assign [class="Nautilus"] $workspace3
-assign [class="Thunar"] $workspace3
-assign [class="Nemo"] $workspace3
-assign [class="vlc"] $workspace3
+assign [class="Code"] $workspace3
+assign [class="Sublime_text"] $workspace3
+assign [class="StarUML"] $workspace3
+assign [class="Eclipse"] $workspace3
+assign [class="jetbrains-pycharm-ce"] $workspace3
+assign [class="Atom"] $workspace3
 #     Workspace 4
-assign [class="Code"] $workspace4
-assign [class="Sublime_text"] $workspace4
-assign [class="StarUML"] $workspace4
-assign [class="Eclipse"] $workspace4
-assign [class="jetbrains-pycharm-ce"] $workspace4
-assign [class="Atom"] $workspace4
+assign [class="Nautilus"] $workspace4
+assign [class="Thunar"] $workspace4
+assign [class="Nemo"] $workspace4
+assign [class="vlc"] $workspace4
 #     Workspace 5
 assign [class="Mailspring"] $workspace5
 assign [class="Signal"] $workspace5
@@ -156,7 +156,7 @@ assign [class="whatsdesk"] $workspace5
 assign [class="VirtualBox Manager"] $workspace12
 
 
-# -----------------------------------| CONTAINERS (windows) |-----------------------------------
+# -------------------------------| CONTAINERS (windows) |-------------------------------
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 #   2020-03-20 >> OK
@@ -292,7 +292,7 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
 
 
-# -------------------------------------| PROGRAM LAUNCHER |-------------------------------------
+# ---------------------------------| PROGRAM LAUNCHER |---------------------------------
 
 # Start a terminal
 #   2020-03-20 >> OK
@@ -316,7 +316,7 @@ bindsym $mod+Shift+d exec rofi -modi drun -show drun -show-icons
 bindsym $mod+Tab exec rofi -show window
 
 
-# -----------------------------------------| UTILITIES |----------------------------------------
+# -------------------------------------| UTILITIES |------------------------------------
 
 # Desktop wallpaper
 #   2020-02-08 >> OK
