@@ -320,7 +320,7 @@ bindsym $mod+Tab exec rofi -show window
 
 # Desktop wallpaper
 #   2020-02-08 >> OK
-exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/wallpaper_space01.jpg
+exec_always feh --bg-scale /home/bryan/Pictures/Wallpapers/wallpaper_terra02.jpg
 
 # Screenfetch on startup in new terminal
 #   2021-01-06 >> testing
