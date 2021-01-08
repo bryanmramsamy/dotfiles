@@ -45,7 +45,7 @@ set_from_resource $urgen2-bg color9
 set $left j
 set $down k
 set $up l
-set $right semicolon
+set $right m
 
 
 # ------------------------------------| NAVIGATION |--------------------------------
@@ -88,35 +88,35 @@ set $workspace12 "12: Virtual Machines "
 
 # Switch to workspace
 #   2019-10-18 >> OK
-bindsym $mod+grave workspace $workspace0
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace10
-bindsym $mod+minus workspace $workspace11
-bindsym $mod+equal workspace $workspace12
+bindsym $mod+twosuperior workspace $workspace0
+bindsym $mod+ampersand workspace $workspace1
+bindsym $mod+eacute workspace $workspace2
+bindsym $mod+quotedbl workspace $workspace3
+bindsym $mod+apostrophe workspace $workspace4
+bindsym $mod+parenleft workspace $workspace5
+bindsym $mod+section workspace $workspace6
+bindsym $mod+egrave workspace $workspace7
+bindsym $mod+exclam workspace $workspace8
+bindsym $mod+ccedilla workspace $workspace9
+bindsym $mod+agrave workspace $workspace10
+bindsym $mod+parenright workspace $workspace11
+bindsym $mod+minus workspace $workspace12
 
 # Move focused container to workspace
 #   2019-10-18 >> OK
-bindsym $mod+Shift+asciitilde move container to workspace $workspace0
-bindsym $mod+Shift+exclam move container to workspace $workspace1
-bindsym $mod+Shift+at move container to workspace $workspace2
-bindsym $mod+Shift+numbersign move container to workspace $workspace3
-bindsym $mod+Shift+dollar move container to workspace $workspace4
-bindsym $mod+Shift+percent move container to workspace $workspace5
-bindsym $mod+Shift+asciicircum move container to workspace $workspace6
-bindsym $mod+Shift+ampersand move container to workspace $workspace7
-bindsym $mod+Shift+asterisk move container to workspace $workspace8
-bindsym $mod+Shift+parenleft move container to workspace $workspace9
-bindsym $mod+Shift+parenright move container to workspace $workspace10
-bindsym $mod+Shift+underscore move container to workspace $workspace11
-bindsym $mod+Shift+plus move container to workspace $workspace12
+bindsym $mod+Shift+threesuperior move container to workspace $workspace0
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+eacute move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+section move container to workspace $workspace6
+bindsym $mod+Shift+egrave move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+ccedilla move container to workspace $workspace9
+bindsym $mod+Shift+agrave move container to workspace $workspace10
+bindsym $mod+Shift+degree move container to workspace $workspace11
+bindsym $mod+Shift+underscore move container to workspace $workspace12
 
 # Move focused workspace between monitors
 #   2021-01-06 >> OK
@@ -164,7 +164,7 @@ floating_modifier $mod
 
 # Kill focused window
 #   2020-03-20 >> OK
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+a kill
 
 # Change focus
 #   2020-03-20 >> OK
@@ -231,7 +231,7 @@ bindsym $mod+f fullscreen toggle
 # Change container layout (stacked, tabbed, toggle split)
 #   2020-03-20 >> OK
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+a layout tabbed
 bindsym $mod+e layout toggle split
 
 # Toggle tiling / floating
@@ -244,11 +244,11 @@ bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
 #   2020-03-20 >> OK
-bindsym $mod+a focus parent
+bindsym $mod+q focus parent
 
 # Focus the child container
 #   2020-03-20 >> OK
-bindsym $mod+Shift+a focus child
+bindsym $mod+Shift+q focus child
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
