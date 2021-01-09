@@ -88,7 +88,7 @@ set $workspace12 "12: Virtual Machines "
 
 # Switch to workspace
 #   2019-10-18 >> OK
-bindsym $mod+grave workspace $workspace0
+bindsym $mod+dead_grave workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -104,7 +104,7 @@ bindsym $mod+equal workspace $workspace12
 
 # Move focused container to workspace
 #   2019-10-18 >> OK
-bindsym $mod+Shift+asciitilde move container to workspace $workspace0
+bindsym $mod+Shift+dead_tilde move container to workspace $workspace0
 bindsym $mod+Shift+exclam move container to workspace $workspace1
 bindsym $mod+Shift+at move container to workspace $workspace2
 bindsym $mod+Shift+numbersign move container to workspace $workspace3
