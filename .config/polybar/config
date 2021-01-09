@@ -38,15 +38,59 @@ color-white-light = ${xrdb:color15}
 
 
 # ---------------------------------------------------------------------------- #
-#                                   TOP BAR
+#                                   TOP BARS
 # ---------------------------------------------------------------------------- #
 
-[bar/top]
+[bar/top-primary]
 bottom = false
 width = 100%
 height = 22
 radius = 0.0
 fixed-center = yes
+
+monitor = ${env:MONITOR1}
+# Tray
+tray-position = ${env:TRAY_POSITION:right}
+
+background = ${colors.color-black-dark}
+foreground = ${colors.color-white-light}
+
+line-size = 3
+line-color = ${colors.color-white-light}
+
+border-size = 0
+border-color = ${colors.color-black-light}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Ubuntu Condensed Regular:size=10;2"
+font-1 = "Font Awesome:size=10;2"
+
+modules-left = i3
+modules-center = date
+modules-right = pulseaudio backlight battery xkeyboard powermenu
+
+tray-position = right
+tray-padding = 0
+tray-background = ${colors.color-black-dark}
+
+cursor-click = pointer
+
+
+[bar/top-secondary]
+bottom = false
+width = 100%
+height = 22
+radius = 0.0
+fixed-center = yes
+
+monitor = ${env:MONITOR2}
+# Tray
+tray-position = ${env:TRAY_POSITION:right}
 
 background = ${colors.color-black-dark}
 foreground = ${colors.color-white-light}
@@ -78,15 +122,50 @@ cursor-click = pointer
 
 
 # ---------------------------------------------------------------------------- #
-#                                  BOTTOM BAR
+#                                  BOTTOM BARS
 # ---------------------------------------------------------------------------- #
 
-[bar/bottom]
+[bar/bottom-primary]
 bottom = true
 width = 100%
 height = 22
 radius = 0.0
 fixed-center = yes
+
+monitor = ${env:MONITOR1}
+
+background = ${colors.color-black-dark}
+foreground = ${colors.color-white-light}
+
+line-size = 3
+line-color = ${colors.color-white-light}
+
+border-size = 0
+border-color = ${colors.color-black-light}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Ubuntu Condensed Regular:size=10;2"
+font-1 = "Font Awesome:size=10;2"
+
+modules-left = cpu temperature memory filesystem
+modules-center = xwindow
+modules-right = wlan eth
+
+cursor-click = pointer
+
+[bar/bottom-secondary]
+bottom = true
+width = 100%
+height = 22
+radius = 0.0
+fixed-center = yes
+
+monitor = ${env:MONITOR2}
 
 background = ${colors.color-black-dark}
 foreground = ${colors.color-white-light}
