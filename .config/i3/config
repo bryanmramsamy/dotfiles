@@ -342,6 +342,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle  # mute sound
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle  # mute mic
 
+#   Alternative shortcuts with mod key
+#   2021-01-15 >> OK
+bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  # volume increase
+bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+  #decrease sound volume
+bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle  # mute sound
+bindsym $mod+F4 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle  # mute mic
+
 # Screen brightness
 #   2019-07-28 >> doens't work
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
