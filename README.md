@@ -38,7 +38,7 @@ sudo snap install mailspring whatsdesk
 #### Docker
 
 ```bash
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 ```
 
 #### Google chrome
@@ -63,7 +63,7 @@ sudo apt install arc-theme
 #### Polybar
 
 ```bash
-sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python3-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2 libjsoncpp-dev fonts-font-awesome
+sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python3-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2 libjsoncpp-dev fonts-font-awesome
 ```
 
 #### Tor Browser
@@ -73,6 +73,12 @@ sudo add-apt-repository ppa:micahflee/ppa
 
 sudo apt update
 sudo apt install torbrowser-launcher
+```
+
+#### Vim
+
+```bash
+sudo apt install fonts-powerline vim-airline
 ```
 
 ## Installations
@@ -244,6 +250,12 @@ EndSection
 
 EOF
 ```
+
+### Vim-Airline
+
+Files/folders to move:
+
+- `.vimrc` -> `home/.vimrc`
 
 ## Sources
 
