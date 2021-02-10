@@ -15,7 +15,7 @@ set $mod Mod4
 #   2020-03-20 >> OK
 bindsym $mod+Shift+c reload
 
-# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 (preserves your layout/session, can be used to upgrade i3)
 #   2020-03-20 >> OK
 bindsym $mod+Shift+r restart
 
@@ -88,7 +88,7 @@ set $workspace12 "12: Virtual Machines "
 
 # Switch to workspace
 #   2019-10-18 >> OK
-bindsym $mod+grave workspace $workspace0
+bindsym $mod+dead_grave workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -104,13 +104,13 @@ bindsym $mod+equal workspace $workspace12
 
 # Move focused container to workspace
 #   2019-10-18 >> OK
-bindsym $mod+Shift+asciitilde move container to workspace $workspace0
+bindsym $mod+Shift+dead_grave move container to workspace $workspace0
 bindsym $mod+Shift+exclam move container to workspace $workspace1
 bindsym $mod+Shift+at move container to workspace $workspace2
 bindsym $mod+Shift+numbersign move container to workspace $workspace3
 bindsym $mod+Shift+dollar move container to workspace $workspace4
 bindsym $mod+Shift+percent move container to workspace $workspace5
-bindsym $mod+Shift+asciicircum move container to workspace $workspace6
+bindsym $mod+Shift+dead_circumflex move container to workspace $workspace6
 bindsym $mod+Shift+ampersand move container to workspace $workspace7
 bindsym $mod+Shift+asterisk move container to workspace $workspace8
 bindsym $mod+Shift+parenleft move container to workspace $workspace9
