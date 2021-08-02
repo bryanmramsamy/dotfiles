@@ -1,18 +1,30 @@
 #!/bin/bash
 
-STATUS=`nordvpn status | grep "Status" | cut -d " " -f 2`
+STATUS=`nordvpn status | grep "Status" | cut -d " " -f 6`
 CITY=`nordvpn status | grep "City" | cut -d " " -f 2`
+SERVER=`nordvpn status | grep "Current server" | cut -d " " -f 3 | cut -d "." -f 1`
+
+RED=`xrdb -query | grep "*color9:"| cut -f 2`
+YELLOW=`xrdb -query | grep "*color3:"| cut -f 2`
+BLUE=`xrdb -query | grep "*color4:"| cut -f 2`
+WHITE=`xrdb -query | grep "*color7:"| cut -f 2`
+
+FOREGROUND="#000000"
+
 
 if [[ $STATUS == Connected ]]; then
-    DISPLAY=$CITY
-    COLOUR="#3CBF75"
+    DISPLAY=${SERVER^^}:${CITY}
+    FOREGROUND=${WHITE}
+    BACKGROUND=${BLUE}
+    # ACTION=`nordvpn d`
 elif [[ $STATUS == Connecting ]]; then
     DISPLAY='Connecting'
-    COLOUR="#D8D782"
+    BACKGROUND=${YELLOW}
 else
     DISPLAY='Disconnected'
-    COLOUR="#E7766B"
+    BACKGROUND=${RED}
+    # ACTION=`nordvpn c Netherlands`
 fi
 
-echo "%{F$COLOUR} (NordVPN) $DISPLAY%{F-}"
+echo "%{B$BACKGROUND}%{F$FOREGROUND}  $DISPLAY "
 exit 0;
