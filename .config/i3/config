@@ -42,10 +42,10 @@ set_from_resource $urgen2-bg color9
 
 # Use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $left j
-set $down k
-set $up l
-set $right semicolon
+set $left h
+set $down j
+set $up k
+set $right l
 
 
 # ------------------------------------| NAVIGATION |--------------------------------
@@ -72,19 +72,19 @@ exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113  # enable
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 #   2019-10-18 >> OK
-set $workspace0 "0: Terminal "
-set $workspace1 "1: Firefox "
-set $workspace2 "2: Chrome "
-set $workspace3 "3: Code "
-set $workspace4 "4: Files "
-set $workspace5 "5: Communications  "
-set $workspace6 "6: Workspace "
-set $workspace7 "7: Workspace "
-set $workspace8 "8: Workspace "
-set $workspace9 "9: Workspace "
-set $workspace10 "10: Workspace "
-set $workspace11 "11: Workspace "
-set $workspace12 "12: Virtual Machines "
+set $workspace0 "0: "
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: "
+set $workspace4 "4: "
+set $workspace5 "5: "
+set $workspace6 "6: ⑥"
+set $workspace7 "7: ⑦"
+set $workspace8 "8: ⑧"
+set $workspace9 "9: ⑨"
+set $workspace10 "10: ⑩"
+set $workspace11 "11: ⑪"
+set $workspace12 "12: "
 
 # Switch to workspace
 #   2019-10-18 >> OK
@@ -104,7 +104,7 @@ bindsym $mod+equal workspace $workspace12
 
 # Move focused container to workspace
 #   2019-10-18 >> OK
-bindsym $mod+Shift+dead_grave move container to workspace $workspace0
+bindsym $mod+Shift+dead_tilde move container to workspace $workspace0
 bindsym $mod+Shift+exclam move container to workspace $workspace1
 bindsym $mod+Shift+at move container to workspace $workspace2
 bindsym $mod+Shift+numbersign move container to workspace $workspace3
@@ -218,7 +218,7 @@ mode "RESIZE MODE" {
 
 # Split in horizontal orientation
 #   2020-03-20 >> OK
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # Split in vertical orientation
 #   2020-03-20 >> OK
@@ -342,8 +342,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle  # mute sound
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle  # mute mic
 
+<<<<<<< HEAD
 #   Alternative shortcuts with mod key
 #   2021-01-15 >> OK
+=======
+>>>>>>> butterfly-2019/qwerty
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%  # volume increase
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
   #decrease sound volume
@@ -385,3 +388,9 @@ exec_always --no-startup-id nm-applet
 # Mailspring
 #   2021-01-06 >> OK
 exec mailspring -b  # open in background
+
+# Gnome screenshot
+#   2021-08-02 >> OK
+bindsym Print exec gnome-screenshot -cf $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+s exec gnome-screenshot -i
+
