@@ -1,0 +1,9 @@
+[bryan]
+[user]
+  email = rainbow_delta@outlook.com
+  name = Bryan M. Ramsamy
+[core]
+  editor = vim
+[alias]
+  pushall = !git remote | xargs -L1 git push --all
+  pushbranchall = !git remote | xargs -L1 -I R git push R
