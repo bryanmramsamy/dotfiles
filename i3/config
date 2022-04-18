@@ -1,0 +1,274 @@
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# Original file can be found on /etc/i3/config
+
+# DEFAULt SETTINGS
+set $mod Mod4
+
+# Reload configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:Ubuntu 10' -m 'DO YOU WANT TO LEAVE i3 ? YOUR Xsession WILL BE ENDED' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# RESOURCES
+
+# Get colours from .Xresources
+set_from_resource $activ1-bg dark_blue
+set_from_resource $activ2-bg light_blue
+
+set_from_resource $activ1-tx light_white
+set_from_resource $activ2-tx dark_white
+
+set_from_resource $inact1-bg dark_black
+set_from_resource $inact2-bg light_black
+
+set_from_resource $urgen1-bg dark_red
+set_from_resource $urgen2-bg light_red
+
+# Use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left h
+set $down j
+set $up k
+set $right l
+
+
+# NAVIGATION
+
+# NumLock auto-enabled (numlockx)
+exec_always --no-startup-id numlockx on
+
+# Mouse hovering (disabled)
+focus_follows_mouse no
+
+# Touchpad natural scrolling
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
+
+
+# WORKSPACES (desktops)
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $workspace0 "0: "
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: "
+set $workspace4 "4: "
+set $workspace5 "5: "
+set $workspace6 "6: ⑥"
+set $workspace7 "7: ⑦"
+set $workspace8 "8: ⑧"
+set $workspace9 "9: ⑨"
+set $workspace10 "10: "
+
+# Switch to workspace
+bindsym $mod+dead_grave workspace $workspace0
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# Move focused container to workspace
+bindsym $mod+Shift+dead_tilde move container to workspace $workspace0
+bindsym $mod+Shift+exclam move container to workspace $workspace1
+bindsym $mod+Shift+at move container to workspace $workspace2
+bindsym $mod+Shift+numbersign move container to workspace $workspace3
+bindsym $mod+Shift+dollar move container to workspace $workspace4
+bindsym $mod+Shift+percent move container to workspace $workspace5
+bindsym $mod+Shift+dead_circumflex move container to workspace $workspace6
+bindsym $mod+Shift+ampersand move container to workspace $workspace7
+bindsym $mod+Shift+asterisk move container to workspace $workspace8
+bindsym $mod+Shift+parenleft move container to workspace $workspace9
+bindsym $mod+Shift+parenright move container to workspace $workspace10
+
+# Move focused workspace between monitors
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$right move workspace to output right
+
+# Assign specific apps to specific workspaces
+# Workspace 1
+assign [class="firefox"] $workspace1
+# Workspace 2
+assign [class="Google-chrome"] $workspace2
+# Workspace 3
+assign [class="Code"] $workspace3
+assign [class="StarUML"] $workspace3
+# Workspace 4
+assign [class="Nautilus"] $workspace4
+assign [class="Nemo"] $workspace4
+assign [class="vlc"] $workspace4
+# Workspace 5
+assign [class="Mailspring"] $workspace5
+assign [class="Signal"] $workspace5
+# Workspace 12
+assign [class="VirtualBox Manager"] $workspace12
+
+
+# CONTAINERS (windows)
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "RESIZE MODE ON"
+
+mode "RESIZE MODE ON" {
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter, Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# Split in horizontal orientation
+bindsym $mod+b split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+Shift+a focus child
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Ubuntu Bold, Font Awesome 12
+
+# Custom windows colours
+# WINDOW TYPE           TOP-BORDER  WIN-BORDER  TEXT        INDICATOR
+client.focused          $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
+client.unfocused        $inact2-bg  $inact1-bg  $activ2-tx  $activ2-tx
+client.focused_inactive $activ2-bg  $activ1-bg  $activ1-tx  $activ1-tx
+client.urgent           $urgen2-bg  $urgen1-bg  $activ1-tx  $activ1-tx
+
+# Window transparancy (compton)
+exec --no-startup-id compton
+
+# Gaps between windows (i3-gaps)
+gaps inner 10
+smart_gaps on
+
+# Floating windows
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
+
+
+# PROGRAM LAUNCHER
+
+# Start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Rofi menu (Documentation: https://www.mankier.com/1/rofi)
+# run: shows a list of executables in $PATH and can launch them
+bindsym $mod+d exec rofi -modi run -show run
+# drun: shows a list of executables in $PATH and can launch them
+bindsym $mod+Shift+d exec rofi -modi drun -show drun -show-icons
+# window: shows a list of the windows on the current desktop and allows switching between them
+bindsym $mod+Tab exec rofi -show window
+
+
+# UTILITIES
+
+# Default workspace on startup
+exec workspace $workspace0 output eDP-1  # CHECK
+
+# Screen layout
+exec $HOME/.screenlayout/main.sh
+
+# Desktop wallpaper
+exec_always feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper_space01.jpg  # TODO: Export to file
+
+# Screenfetch on startup in new terminal
+exec gnome-terminal -- zsh -c "screenfetch; zsh"
+
+# Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh  # TODO: Make dynamic script on hostname
+
+# Enable sound on i3 with starting pulseaudio
+exec_always start-pulseaudio-x1
+
+# Pulse Audio controls
+# Volume increase
+bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+# Volume decrease
+bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+# Mute volume
+bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Mute mic
+bindsym $mod+F4 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Screen brightness
+# TODO
+
+# Media player
+# TODO
+
+# Scratchpad
+# Move the currently focused window to the scratchpad
+bindsym Mod1+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod1+minus scratchpad show
+
+# Lockscreen (i3lock)
+bindsym $mod+p exec i3lock  # TODO: Customise lockscreen
+
+# Network manager
+exec_always --no-startup-id nm-applet
+
+# Mailspring
+exec mailspring -b  # open in background
+
+# Gnome screenshot
+bindsym Print exec gnome-screenshot -cf $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+s exec gnome-screenshot -i

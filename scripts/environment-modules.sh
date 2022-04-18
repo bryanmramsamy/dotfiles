@@ -111,21 +111,21 @@ function python_install_packages()
   }
 }
 
-function create_tmp_directory()
+function create_TMP_DIRECTORYectory()
 {
   message="Create temporary installation directory"
   print_starting_message
   try
   (
     CURRENT_DIRECTORY=$(pwd)
-    tmp_dir="~/.installation_tmp"
-    mkdir $tmp_dir -pv
+    TMP_DIRECTORY="~/.installation_tmp"
+    mkdir $TMP_DIRECTORY -pv
 
     print_success_message
   )
   catch || {
     print_error_message
-    rm -rf $tmp_dir
+    rm -rf $TMP_DIRECTORY
     cd $CURRENT_DIRECTORY
     exit 1
   }
@@ -137,7 +137,7 @@ function google_chrome_installation()
   print_starting_message
   try
   (
-    cd $tmp_dir || throw $ERR_BAD
+    cd $TMP_DIRECTORY || throw $ERR_BAD
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     throw $ERR_BAD
     sudo dpkg -i google-chrome-stable_current_amd64.deb || throw $ERR_BAD
@@ -205,6 +205,24 @@ function signal_messenger_installation()
   }
 }
 
+function star_uml_installation()
+{
+  message="Star UML installation"
+  print_starting_message
+  try
+  (
+    cd $TMP_DIRECTORY || throw $ERR_BAD
+    wget https://staruml.io/download/releases-v5/StarUML_5.0.1_amd64.deb || throw $ERR_BAD
+    sudo dpkg -i StarUML_5.0.1_amd64.deb || throw $ERR_BAD
+
+    print_success_message
+  )
+  catch || {
+    print_error_message
+    exit 1
+  }
+}
+
 function docker_setup()
 {
   message="Docker and docker-compose setup"
@@ -230,7 +248,7 @@ function firefox_profile_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/firefox-profiles/* ~/.local/bin/ -v || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/firefox/* ~/.local/bin/ -v || throw $ERR_BAD
     chmod +x ~/.local/bin/* || throw $ERR_BAD
 
     print_success_message
@@ -333,6 +351,24 @@ function vim_setup()
   try
   (
     cp $CURRENT_DIRECTORY/vim/.vimrc ~/ -v || throw $ERR_BAD
+    vim +PlugInstall  # TODO: Make it quite
+
+    print_success_message
+  )
+  catch || {
+    print_error_message
+    exit 1
+  }
+}
+
+function xrandr_setup()
+{
+  message="Xrandr setup"
+  print_starting_message
+  try
+  (
+    cp $CURRENT_DIRECTORY/screenlayout/main.sh ~/.screenlayout/ -rv \
+     || throw $ERR_BAD
 
     print_success_message
   )

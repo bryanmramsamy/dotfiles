@@ -29,6 +29,7 @@ try
   polybar_setup
   touchpad_setup
   vim_setup
+  xrandr_setup
   xresources_setup
 
   docker_setup
@@ -36,6 +37,8 @@ try
   git_setup
   nemo_setup
   zsh_complete_setup
+
+  print_success_message
 )
 catch || {
   exit 1
