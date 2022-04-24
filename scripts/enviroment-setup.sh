@@ -1,8 +1,8 @@
 #!/bin/bash
 # Main environment setup bash script
-source ./environment-modules.sh
-source ./terminal-colors.sh
-source ./try-catch.sh
+source ../bin/environment-modules.sh
+source ../bin/terminal-colors.sh
+source ../bin/try-catch.sh
 
 
 export hostname=$(hostname)

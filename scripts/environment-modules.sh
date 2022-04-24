@@ -1,6 +1,6 @@
 #!/bin/bash
 # Modules used for environment setup script
-source ./try-catch.sh
+source ../bin/try-catch.sh
 
 
 ERROR="ERROR"
@@ -66,7 +66,11 @@ function apt_install_packages()
   print_starting_message
   try
   (
-    sudo apt install acpi arandr arc-theme cloc compton docker feh firefox fonts-firacode fonts-powerline git grub-customizer i3-gaps lxappearance net-tools numlockx nemo npm polybar python3-pip screenfetch tor rofi virtualenv virtualenvwrapper vim vim-airline vlc zsh || throw $ERR_BAD
+    sudo apt install acpi arandr arc-theme cloc compton docker feh firefox \
+      fonts-firacode fonts-powerline git grub-customizer i3-gaps lxappearance \
+      net-tools numlockx nemo npm polybar pycodestyle python3-pip screenfetch \
+      tor rofi virtualenv virtualenvwrapper vim vim-airline vlc zsh \
+      || throw $ERR_BAD
 
     sudo snap install code --classic || throw $ERR_BAD
     sudo snap install mailspring || throw $ERR_BAD
@@ -111,7 +115,7 @@ function python_install_packages()
   }
 }
 
-function create_TMP_DIRECTORYectory()
+function create_tmp_directory()
 {
   message="Create temporary installation directory"
   print_starting_message
@@ -212,7 +216,8 @@ function star_uml_installation()
   try
   (
     cd $TMP_DIRECTORY || throw $ERR_BAD
-    wget https://staruml.io/download/releases-v5/StarUML_5.0.1_amd64.deb || throw $ERR_BAD
+    wget https://staruml.io/download/releases-v5/StarUML_5.0.1_amd64.deb \
+      || throw $ERR_BAD  # TODO: Fetch last version
     sudo dpkg -i StarUML_5.0.1_amd64.deb || throw $ERR_BAD
 
     print_success_message
@@ -401,7 +406,7 @@ function zsh_complete_setup()
   try(
     chsh -s $(which zsh) || throw $ERR_BAD
     cp $CURRENT_DIRECTORY/zsh/.zshrc ~/ -v || throw $ERR_BAD
-    oh-my-zsh_installation || throw @ERR_BAD
+    oh-my-zsh_installation || throw $ERR_BAD
     cp $CURRENT_DIRECTORY/zsh/.p10k.zsh ~/ -v || throw $ERR_BAD
     sed "s/# env_default 'LESS' '-R'/env_default 'LESS' '-FRSX'" \
       ~/.oh-my-zsh/lib/misc/zsh || throw $ERR_BAD
