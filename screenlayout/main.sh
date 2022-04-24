@@ -7,15 +7,21 @@ HOSTNAME=$(hostname)
 
 case $HOSTNAME in
   "Butterfly-2019")
+  export MONITOR_1=eDP-1
+
   DP_1_1_CONNECTED=false
   DP_1_3_CONNECTED=false
 
     case "${CONNECTED_OUTPUTS[@]}" in *"DP-1-1"*)
+        export MONITOR_2=DP-1-1
+
         DP_1_1_CONNECTED=true
       ;;
     esac
 
     case "${CONNECTED_OUTPUTS[@]}" in *"DP-1-3"*)
+        export MONITOR_3=DP-1-3
+
         DP_1_3_CONNECTED=true
       ;;
     esac
