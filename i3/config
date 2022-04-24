@@ -216,13 +216,13 @@ bindsym $MOD+Tab exec rofi -show window
 # UTILITIES
 
 # Default workspace on startup
-exec workspace $WORKSPACE_0 output eDP-1  # TODO: conditional on hostname
+exec workspace $WORKSPACE_0 output $MONITOR1
 
 # Screen layout
 exec_always $HOME/.screenlayout/main.sh
 
 # Desktop wallpaper
-exec_always feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper_space01.jpg  # TODO: Export to file
+exec_always feh --bg-scale $DEFAULT_WALLPAPER_PATH
 
 # Screenfetch on startup in new terminal
 exec gnome-terminal -- zsh -c "screenfetch; zsh"  # TODO: On workspace1
@@ -255,13 +255,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Scratchpad
 # Move the currently focused window to the scratchpad
-bindsym Mod1+Shift+minus move scratchpad
+bindsym $MOD+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
+bindsym $MOD+minus scratchpad show
 
 # Lockscreen (i3lock)
-bindsym $MOD+p exec i3lock  # TODO: Customise lockscreen
+bindsym $MOD+Shift+l exec i3lock  # TODO: Customise lockscreen
 
 # Network manager
 exec_always --no-startup-id nm-applet

@@ -27,14 +27,14 @@ case $HOSTNAME in
     esac
 
     if [ $DP_1_1_CONNECTED = true ] && [ $DP_1_3_CONNECTED = true ]; then
-      xrandr --output eDP-1 --mode 1920x1080 --pos 3840x0 --rotate normal \
-        --output DP-1-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal \
-        --output DP-1-3 --mode 1920x1080 --pos 0x0 --rotate normal
+      xrandr --output $MONITOR_1 --mode 1920x1080 --pos 3840x0 --rotate normal \
+        --output $MONITOR_2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal \
+        --output $MONITOR_3 --mode 1920x1080 --pos 0x0 --rotate normal
     elif [ $DP_1_1_CONNECTED = true ]
-      xrandr --output eDP-1 --mode 1920x1080 --pos 3840x0 --rotate normal \
-        --output DP-1-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal \
+      xrandr --output $MONITOR_1 --mode 1920x1080 --pos 3840x0 --rotate normal \
+        --output $MONITOR_2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal \
     else
-      xrandr --output eDP-1 --primary --mode 1920x1080 --pos 3840x0 --rotate normal
+      xrandr --output $MONITOR_1 --primary --mode 1920x1080 --pos 3840x0 --rotate normal
     fi
   ;;
 esac

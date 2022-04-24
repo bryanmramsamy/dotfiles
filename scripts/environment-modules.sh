@@ -122,7 +122,7 @@ function create_tmp_directory()
   try
   (
     CURRENT_DIRECTORY=$(pwd)
-    TMP_DIRECTORY="~/.installation_tmp"
+    TMP_DIRECTORY="$HOME/.installation_tmp"
     mkdir $TMP_DIRECTORY -pv
 
     print_success_message
@@ -184,8 +184,8 @@ function oh-my-zsh_installation()
 {
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 }
 
 function signal_messenger_installation()
@@ -253,8 +253,8 @@ function firefox_profile_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/firefox/* ~/.local/bin/ -v || throw $ERR_BAD
-    chmod +x ~/.local/bin/* || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/firefox/* $HOME/.local/bin/ -v || throw $ERR_BAD
+    chmod +x $HOME/.local/bin/* || throw $ERR_BAD
 
     print_success_message
   )
@@ -270,7 +270,7 @@ function fonts_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/fonts/* ~/.fonts/ -rv || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/fonts/* $HOME/.fonts/ -rv || throw $ERR_BAD
 
     print_success_message
   )
@@ -286,7 +286,7 @@ function git_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/git/.gitconfig ~/ -v || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/git/.gitconfig $HOME/ -v || throw $ERR_BAD
 
     print_success_message
   )
@@ -321,8 +321,8 @@ function polybar_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/polybar/* ~/.config/polybar/ -rv || throw $ERR_BAD
-    chmod +x ~/.config/polybar/* || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/polybar/* $HOME/.config/polybar/ -rv || throw $ERR_BAD
+    chmod +x $HOME/.config/polybar/* || throw $ERR_BAD
 
     print_success_message
   )
@@ -355,8 +355,24 @@ function vim_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/vim/.vimrc ~/ -v || throw $ERR_BAD
-    vim +PlugInstall  # TODO: Make it quite
+    cp $CURRENT_DIRECTORY/vim/.vimrc $HOME/ -v || throw $ERR_BAD
+    vim +PlugInstall &> /dev/null
+
+    print_success_message
+  )
+  catch || {
+    print_error_message
+    exit 1
+  }
+}
+
+function wallpaper_setup()
+{
+  message="Wallpaper setup"
+  print_starting_message
+  try
+  (
+    cp $CURRENT_DIRECTORY/Wallpapers $HOME/Pictures/ -rv || throw $ERR_BAD
 
     print_success_message
   )
@@ -372,7 +388,7 @@ function xrandr_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/screenlayout/main.sh ~/.screenlayout/ -rv \
+    cp $CURRENT_DIRECTORY/screenlayout/main.sh $HOME/.screenlayout/ -rv \
      || throw $ERR_BAD
 
     print_success_message
@@ -389,7 +405,7 @@ function xresources_setup()
   print_starting_message
   try
   (
-    cp $CURRENT_DIRECTORY/Xresources/.Xresources ~/ -v || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/Xresources/.Xresources $HOME/ -v || throw $ERR_BAD
 
     print_success_message
   )
@@ -405,11 +421,11 @@ function zsh_complete_setup()
   print_starting_message
   try(
     chsh -s $(which zsh) || throw $ERR_BAD
-    cp $CURRENT_DIRECTORY/zsh/.zshrc ~/ -v || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/zsh/.zshrc $HOME/ -v || throw $ERR_BAD
     oh-my-zsh_installation || throw $ERR_BAD
-    cp $CURRENT_DIRECTORY/zsh/.p10k.zsh ~/ -v || throw $ERR_BAD
+    cp $CURRENT_DIRECTORY/zsh/.p10k.zsh $HOME/ -v || throw $ERR_BAD
     sed "s/# env_default 'LESS' '-R'/env_default 'LESS' '-FRSX'" \
-      ~/.oh-my-zsh/lib/misc/zsh || throw $ERR_BAD
+      $HOME/.oh-my-zsh/lib/misc/zsh || throw $ERR_BAD
 
     print_success_message
   )

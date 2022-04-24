@@ -1,12 +1,12 @@
 #!/bin/bash
 # Main environment setup bash script
-source ../bin/environment-modules.sh
+source ./environment-modules.sh
+source ./environment-variables-export.sh
 source ../bin/utils/terminal-colors.sh
 source ../bin/utils/try-catch.sh
 
 
-export hostname=$(hostname)
-export message="Installation process"
+export message="Installation process"  # CHECK
 print_starting_message
 try
 (
@@ -14,6 +14,8 @@ try
   apt_install_packages
   node_install_packages
   python_install_packages
+
+  set_environment_variables || throw $ERR_CRITICAL
 
   create_tmp_directory || throw $ERR_CRITICAL
   google_chrome_installation

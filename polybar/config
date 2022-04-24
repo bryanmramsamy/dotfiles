@@ -89,37 +89,37 @@ tray-position = right
 [bar/top-monitor1]
 inherit = bar/top
 
-monitor = ${env.MONITOR1}
+monitor = ${env.MONITOR_1}
 
 
 [bar/button-monitor1]
 inherit = bar/button
 
-monitor = ${env.MONITOR1}
+monitor = ${env.MONITOR_1}
 
 
 [bar/top-monitor2]
 inherit = bar/top
 
-monitor = ${env.MONITOR2}
+monitor = ${env.MONITOR_2}
 
 
 [bar/button-monitor2]
 inherit = bar/button
 
-monitor = ${env.MONITOR2}
+monitor = ${env.MONITOR_2}
 
 
 [bar/top-monitor3]
 inherit = bar/top
 
-monitor = ${env.MONITOR3}
+monitor = ${env.MONITOR_3}
 
 
 [bar/button-monitor3]
 inherit = bar/button
 
-monitor = ${env.MONITOR3}
+monitor = ${env.MONITOR_3}
 
 
 # Modules
@@ -207,7 +207,7 @@ format-background = ${colors.full_black}
 [module/eth]
 inherit = module/network
 
-interface = ${env.INTERFACES_MAIN_ETH}  # TODO
+interface = ${env.INTERFACES_MAIN_ETH}
 
 label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %linkspeed%  %downspeed%  %upspeed% %{A}"
 
@@ -391,8 +391,7 @@ type = internal/temperature
 background = ${colors.dark_yellow}  # FIXME
 background-next = ${colors.dark_yellow}  # FIXME
 
-hwmon-path = ${env.HWMON_PATH}  # TODO
-# hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
+hwmon-path = ${env.HWMON_PATH}
 
 thermal-zone = 0
 warn-temperature = 85
@@ -418,7 +417,7 @@ ramp-4 = " "
 [module/wlan]
 inherit = module/network
 
-interface = ${env.INTERFACES_MAIN_WLAN}  # TODO
+interface = ${env.INTERFACES_MAIN_WLAN}
 
 label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% %{A}"
 
