@@ -321,7 +321,7 @@ format-disconnected-underline = ${colors.light_red}
 [module/nordvpn]
 type = custom/script
 
-exec = /home/bryan/bin/nordvpn-status-bar
+exec = /home/bryan/bin/nordvpn-status-bar.sh
 tail = true
 interval = 1
 

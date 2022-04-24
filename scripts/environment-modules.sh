@@ -1,6 +1,6 @@
 #!/bin/bash
 # Modules used for environment setup script
-source ../bin/try-catch.sh
+source ../utils/bin/try-catch.sh
 
 
 ERROR="ERROR"
