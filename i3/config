@@ -272,3 +272,7 @@ exec mailspring -b  # open in background
 # Gnome screenshot
 bindsym Print exec gnome-screenshot -cf $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym $MOD+Shift+s exec gnome-screenshot -i
+
+# Redshift
+exec --no-startup-id redshift-gtk -l 50.65248082766665:4.199105454890347
+
