@@ -4,8 +4,8 @@
 
 [colors]
 full_black = #000000
-light_black = ${xrdb:light-black}
 dark_black = ${xrdb:dark-black}
+light_black = ${xrdb:light-black}
 light_red = ${xrdb:light-red}
 dark_red = ${xrdb:dark-red}
 light_green = ${xrdb:light-green}
@@ -20,6 +20,12 @@ light_cyan = ${xrdb:light-cyan}
 dark_cyan = ${xrdb:dark-cyan}
 light_white = ${xrdb:light-white}
 dark_white = ${xrdb:dark-white}
+
+[monitors]
+primary = eDP1
+secondary =
+tertiary =
+quaternary =
 
 
 # Settings
@@ -46,12 +52,12 @@ foreground = ${colors.light_white}
 background = ${colors.full_black}
 line-color = ${colors.light_white}
 line-size = 3
-border-color = ${colors.color-black-light}
+border-color = ${colors.light_black}
 border-size = 0
 
 cursor-click = pointer
 fixed-center = yes
-font-0 = "Ubuntu Condensed Regular:size=10;2"
+font-0 = "JetBrains Mono Medium:size=9;2"
 font-1 = "Font Awesome:size=10;2"
 font-2 = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
 module-margin-left = 0
@@ -89,37 +95,37 @@ tray-position = right
 [bar/top-monitor1]
 inherit = bar/top
 
-monitor = ${env.MONITOR_1}
+monitor = ${monitors.primary} 
 
 
-[bar/button-monitor1]
-inherit = bar/button
+[bar/bottom-monitor1]
+inherit = bar/bottom
 
-monitor = ${env.MONITOR_1}
+monitor = ${monitors.primary} 
 
 
 [bar/top-monitor2]
 inherit = bar/top
 
-monitor = ${env.MONITOR_2}
+monitor = ${monitors.secondary} 
 
 
-[bar/button-monitor2]
-inherit = bar/button
+[bar/bottom-monitor2]
+inherit = bar/bottom
 
-monitor = ${env.MONITOR_2}
+monitor = ${monitors.secondary} 
 
 
 [bar/top-monitor3]
 inherit = bar/top
 
-monitor = ${env.MONITOR_3}
+monitor = ${monitors.tertiary} 
 
 
-[bar/button-monitor3]
-inherit = bar/button
+[bar/bottom-monitor3]
+inherit = bar/bottom
 
-monitor = ${env.MONITOR_3}
+monitor = ${monitors.tertiary} 
 
 
 # Modules
