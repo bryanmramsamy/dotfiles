@@ -69,9 +69,9 @@ inherit = bar/base
 
 bottom = false
 
-modules-left = i3
-modules-center = xwindow
-modules-right = pulseaudio backlight battery xkeyboard powermenu
+modules-left = hostname i3 xwindow
+modules-center = 
+modules-right = mediaplayer info-camera-mic pulseaudio pulseaudio-microphone backlight battery xkeyboard powermenu
 
 tray-background = ${colors.full_black}
 tray-padding = 0
@@ -88,8 +88,8 @@ modules-center = date
 modules-right = wlan eth nordvpn
 
 tray-background = ${colors.full_black}
-tray-padding = 0
-tray-position = right
+# tray-padding = 0
+# tray-position = right
 
 
 [bar/top-monitor1]
@@ -150,12 +150,12 @@ adapter = ADP1
 low-at = 15
 full-at = 98
 
-label-charging = " %percentage%%  %time:0:5%  %consumption% W "
+label-charging = " %percentage%%  %time:0:5% "
 format-charging = <animation-charging> <label-charging>
 format-charging-foreground = ${colors.full_black}
 format-charging-background = ${colors.dark_yellow}
 
-label-discharging = " %percentage%%  %time:0:5%  %consumption% W "
+label-discharging = " %percentage%%  %time:0:5% "
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-foreground = ${colors.full_black}
 format-discharging-background = ${colors.dark_cyan}
@@ -165,7 +165,7 @@ format-full-prefix = " "
 format-full-foreground = ${colors.full_black}
 format-full-background = ${colors.dark_green}
 
-label-low= " %percentage%%  %time:0:5%  %consumption% W "
+label-low= " %percentage%%  %time:0:5% "
 format-low-prefix = " "
 format-low-foreground = ${colors.full_black}
 format-low-background = ${colors.light_red}
@@ -185,7 +185,6 @@ animation-charging-framerate = 1000
 
 
 [module/cpu]
-inherit = powerline-templates/left-to-right-item  # FIXME
 type = internal/cpu
 
 background = ${colors.dark_yellow}  # FIXME
@@ -213,9 +212,9 @@ format-background = ${colors.full_black}
 [module/eth]
 inherit = module/network
 
-interface = ${env.INTERFACES_MAIN_ETH}
+interface =
 
-label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %linkspeed%  %downspeed%  %upspeed% %{A}"
+label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %linkspeed% %{A}"
 
 
 [module/filesystem]
@@ -225,7 +224,7 @@ interval = 10
 spacing = 0
 
 mount-0 = /
-mount-1 = ${env.MOUNTPOINT_SHAREDPARTITION}
+mount-1 =
 
 label-mounted = "  %free%/%total% "
 label-unmounted = "  %mountpoint%  "
@@ -236,8 +235,17 @@ label-mounted-foreground = ${colors.full_black}
 label-mounted-background = ${colors.dark_green}
 
 
+[module/hostname]
+type = custom/script
+exec = hostname
+
+format-background = ${colors.dark_white}
+format-foreground = ${colors.dark_black}
+format-padding = 2
+format-prefix = " "
+
+
 [module/i3]
-inherit = powerline-templates/left-to-right-item  # FIXME
 type = internal/i3
 
 format = <label-state> <label-mode>
@@ -281,6 +289,12 @@ label-urgent-padding = 1
 # label-separator = |
 
 
+[module/info-camera-mic]
+type = custom/script
+exec = $HOME/bin/polybar-scripts/info-camera-mic/info-camera-mic.sh
+interval = 5
+
+
 [module/mediaplayer]
 type = internal/mpd  # TODO
 
@@ -297,7 +311,6 @@ label-song-ellipsis = true
 
 
 [module/memory]
-inherit = powerline-templates/left-to-right-item-with-separator  # FIXME
 type = internal/memory
 
 background = ${colors.light_white}  # FIXME
@@ -306,7 +319,7 @@ separator = ${colors.light_white}  # FIXME
 interval = 2
 label = "  %gb_free% "
 format-foreground = ${colors.light_white}
-format-background = ${colors.color-magenta-light}
+format-background = ${colors.dark_magenta}
 
 
 [module/network]
@@ -376,7 +389,7 @@ menu-2-0-background = ${colors.dark_yellow}
 [module/pulseaudio]
 type = internal/pulseaudio
 
-label-volume = " %percentage%% "
+label-volume = "%percentage:3%% "
 format-volume = %{A3:pavucontrol:}<ramp-volume> <label-volume>%{A}
 format-volume-foreground = ${colors.light_white}
 format-volume-background = ${colors.dark_blue}
@@ -392,14 +405,26 @@ background = ${colors.dark_yellow}
 background-next = ${colors.dark_yellow}
 
 
+[module/pulseaudio-microphone]
+type = custom/script
+
+exec = $HOME/bin/polybar-scripts/pulseaudio-microphone/pulseaudio-microphone.sh
+tail = true
+
+label = " %output% "
+format-foreground = ${colors.dark_black}
+format-background = ${colors.dark_yellow}
+
+click-left = $HOME/bin/polybar-scripts/pulseaudio-microphone/pulseaudio-microphone.sh --toggle &
+scroll-up = $HOME/bin/polybar-scripts/pulseaudio-microphone/pulseaudio-microphone.sh --increase &
+scroll-down = $HOME/bin/polybar-scripts/pulseaudio-microphone/pulseaudio-microphone.sh --decrease &
+
+
 [module/temperature]
-inherit = powerline-templates/left-to-right-item  # FIXME
 type = internal/temperature
 
-background = ${colors.dark_yellow}  # FIXME
-background-next = ${colors.dark_yellow}  # FIXME
-
-hwmon-path = ${env.HWMON_PATH}
+background = ${colors.dark_yellow}
+background-next = ${colors.dark_yellow}
 
 thermal-zone = 0
 warn-temperature = 85
@@ -425,9 +450,9 @@ ramp-4 = " "
 [module/wlan]
 inherit = module/network
 
-interface = ${env.INTERFACES_MAIN_WLAN}
+interface =
 
-label-connected = "%{A3:nm-connection-editor:}  %local_ip%  %essid%  %signal%%  %downspeed%  %upspeed% %{A}"
+label-connected = "%{A1:nm-connection-editor:}  %local_ip%  %essid%  %signal%% %{A}"
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -439,11 +464,10 @@ ramp-signal-4 = 
 [module/xbacklight]
 type = internal/xbacklight  # FIXME
 
-output = VGA-0
 enable-scroll = true
 
 format = <label>
-label = "%percentage%"
+label = "%percentage:3%"
 
 # bar-width = 10
 # bar-indicator = |
@@ -460,7 +484,9 @@ label = "%percentage%"
 [module/xkeyboard]
 type = internal/xkeyboard
 
-format = <label-layout><label-indicator>
+click-left = ibus-setup &
+
+format = "%{A1:ibus-setup &:}<label-layout><label-indicator>%{A}"
 format-prefix = "  "
 format-foreground = ${colors.full_black}
 format-background = ${colors.dark_white}
@@ -471,20 +497,20 @@ label-layout = "%layout% "
 label-indicator-padding = 1
 label-indicator-margin = 1
 
-label-indicator-on-numlock = " 1 "
 label-indicator-off-numlock = " 1 "
+label-indicator-on-numlock= ${self.label-indicator-off-numlock} 
 label-indicator-on-numlock-underline= ${colors.full_black}
 
-label-indicator-on-capslock = " A "
 label-indicator-off-capslock = " A "
+label-indicator-on-capslock = ${self.label-indicator-off-capslock} 
 label-indicator-on-capslock-underline= ${colors.full_black}
 
-label-indicator-on-scrolllock = " ↓ "
 label-indicator-off-scrolllock = " ↓ "
+label-indicator-on-scrolllock = ${self.label-indicator-off-scrolllock} 
 label-indicator-on-scrollock-underline= ${colors.full_black}
 
 
 [module/xwindow]
 type = internal/xwindow
 
-label = %title:0:80:...%
+label = " %title:0:70:...% " 
