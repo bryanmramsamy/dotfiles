@@ -331,7 +331,9 @@ exec = /home/bryan/bin/nordvpn-status-bar.sh
 tail = true
 interval = 1
 
-format-foreground = ${colors.full_black}
+click-left = nordvpn c &
+click-middle = nordvpn d &
+click-right = nordvpn connect --group P2P &
 
 
 [module/powermenu]
